@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: white;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(#2c3e50, #2aacb8);
+    Color : white;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+/* Main Body Structure */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    gap: 20px;
+}
+
+nav {
+    flex: 1 1 15%;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main {
+    flex: 1 1 55%;
+    min-width: 300px;
+}
+
+aside {
+    flex: 1 1 20%;
+    min-width: 250px;
+    padding: 15px;
+    background: whitesmoke;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.marketing{
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.marketing a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.marketing img {
+    max-width: 100%;
+    height: 200px;
+    border: 2px solid white;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+aside h2 {
+    margin-bottom: 10px;
+}
+
+.signUp {
+    background: darkcyan;
+    align-content: center;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.signUp:hover {
+    background: cadetblue;
+    text-decoration: underline;
+}
+
+/* Nav */
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    margin: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+nav a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 5px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2c3e50;
+    color: white;
+    margin-top: 20px;
+
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* For mobile use */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    nav, main, aside {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+    .products article {
+        flex: 1 1 100%;
+    }
+    .full-width-article {
+        flex: 1 1 100%;
+    }
+}
