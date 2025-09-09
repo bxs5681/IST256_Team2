@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiTech Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: white;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(#2c3e50, #2aacb8);
+            Color : white;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+        /* Main Body Structure */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+            gap: 20px;
+        }
+
+        nav {
+            flex: 1 1 15%;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        main {
+            flex: 1 1 55%;
+            min-width: 300px;
+        }
+
+        aside {
+            flex: 1 1 20%;
+            min-width: 250px;
+            padding: 15px;
+            background: whitesmoke;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .marketing{
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+
+        }
+
+        .marketing a {
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
+
+        .marketing img {
+            max-width: 100%;
+            height: 200px;
+            border: 2px solid white;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+
+        aside h2 {
+            margin-bottom: 10px;
+        }
+
+        .signUp {
+            background: darkcyan;
+            align-content: center;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .signUp:hover {
+            background: cadetblue;
+            text-decoration: underline;
+        }
+
+        /* Nav */
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 5px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            background-color: #f0f8ff;
+            border-radius: 4px;
+        }
+
+        /* Products */
+        main h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8rem;
+        }
+
+        main h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .category {
+            margin-top: 15px;
+            margin-bottom: 25px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .products article {
+            flex: 1 1 calc(30%);
+            min-width: 220px;
+            background: white;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .products article:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
+
+        .products img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .full-width-article {
+            flex: 1 1 100%;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .banner {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid lightgray;
+        }
+
+        .full-width-article:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: scale(1.01);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+            margin-top: 20px;
+
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* For mobile use */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            nav, main, aside {
+                flex: 1 1 100%;
+                min-width: unset;
+            }
+            .products article {
+                flex: 1 1 100%;
+            }
+            .full-width-article {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <img src="Images/HiTech Logo Transparent.png" height="150" width="150" alt="HiTech Store Logo" style="filter:hue-rotate(60deg)">
+    <div>
+        <h1>HiTech Store</h1>
+        <p><em>Your one-stop shop for all tech gadgets</em></p>
+    </div>
+</header>
+
+<!-- Main Layout -->
+<div class="container">
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+        <h2>Current Product Sales</h2>
+
+        <!-- Smartphones -->
+        <div class="category">
+            <h3>Featured Smartphones</h3>
+            <div class="products">
+                <article>
+                    <img src="Images/Iphone 16 Pro Max.jpg" alt="iPhone 16 Pro Max">
+                    <h4>iPhone 16 Pro Max</h4>
+                    <p><b>Price:</b> Starting $1,199</p>
+                    <p>Trade-in eligible.</p>
+                </article>
+                <article>
+                    <img src="Images/Samsung Galaxy S26 Ultra.png" alt="Samsung Galaxy S26 Ultra">
+                    <h4>Samsung Galaxy S26 Ultra</h4>
+                    <p><b>Price:</b> Starting $1,299</p>
+                    <p>Trade-in eligible.</p>
+                </article>
+                <article>
+                    <img src="Images/Google Pixel 10 Pro.jpg" alt="Google Pixel 10 Pro">
+                    <h4>Google Pixel 10 Pro</h4>
+                    <p><b>Price:</b> Starting $1,099</p>
+                    <p>Trade-in eligible.</p>
+                </article>
+            </div>
+        </div>
+
+        <!-- Laptops -->
+        <div class="category">
+            <h3>Featured Laptops</h3>
+            <div class="products">
+                <article>
+                    <img src="Images/MacBook Pro.jpg" alt="MacBook Pro">
+                    <h4>MacBook Pro</h4>
+                    <p><b>Price:</b> Starting $1,599.99</p>
+                </article>
+                <article>
+                    <img src="Images/Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition.png" alt="Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition">
+                    <h4>Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition</h4>
+                    <p><b>Price:</b> Starting $1,664.96</p>
+                </article>
+                <article>
+                    <img src="Images/Dell XPS 14.png" alt="Dell XPS 14">
+                    <h4>Dell XPS 14</h4>
+                    <p><b>Price:</b> Starting $1,399.99</p>
+                </article>
+            </div>
+        </div>
+
+        <!-- Accessories -->
+        <div class="category">
+            <h3>Accessories Bundle</h3>
+            <div class="full-width-article">
+                <article>
+                    <img src="Images/Accessories Bundle.jpg" alt="Accessories Bundle" class="banner">
+                    <p>Buy one accessory, get <strong>10% off</strong> on second accessory. Includes chargers, headphones, cases, and more.</p>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Aside -->
+    <aside>
+        <h2>Special Offers</h2>
+        <div class="marketing">
+            <p><a href="#"> Create an account today and <strong>save 15%</strong> on your first order!</a></p>
+            <a href="#" class="signUp">Sign Up Now</a>
+        </div>
+        <div class="marketing">
+            <p><a href="#"> <strong>Exclusive Offer:</strong> Spend $1000 and get $100 back!</a></p>
+        </div>
+        <div class="marketing">
+            <img src="Images/50 Off.png" alt="Up to 50% Off">
+            <p><a href="#"> Check out our limited-time deals. Up to 50% off. Use code <b>SPECIALDAY</b></a></p>
+        </div>
+    </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a> | <a href="#">Privacy Policy</a></p>
+    <p>&copy; 2025 HiTech Store. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
