@@ -1,0 +1,221 @@
+<html>
+<head>
+<title>Storefront_Home_Page_HTML.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+.s6 { color: #56a8f5;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Storefront_Home_Page_HTML.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">name</span><span class="s3">=&quot;viewport&quot; </span><span class="s2">content</span><span class="s3">=&quot;width=device-width, initial-scale=1.0&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">HiTech Store</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;Storefront_Page_Layout.css&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s4">/* Products */</span>
+        <span class="s0">main h2 </span><span class="s1">{</span>
+            <span class="s2">margin-bottom</span><span class="s1">: </span><span class="s5">20</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">padding-bottom</span><span class="s1">: </span><span class="s5">10</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">border-bottom</span><span class="s1">: </span><span class="s5">2</span><span class="s3">px solid </span><span class="s6">#3498db</span><span class="s1">;</span>
+            <span class="s2">font-size</span><span class="s1">: </span><span class="s5">1.8</span><span class="s3">rem</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">main h3 </span><span class="s1">{</span>
+            <span class="s2">color</span><span class="s1">: </span><span class="s6">#3498db</span><span class="s1">;</span>
+            <span class="s2">margin-bottom</span><span class="s1">: </span><span class="s5">15</span><span class="s3">px</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">category </span><span class="s1">{</span>
+            <span class="s2">margin-top</span><span class="s1">: </span><span class="s5">15</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">margin-bottom</span><span class="s1">: </span><span class="s5">25</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">background-color</span><span class="s1">: </span><span class="s3">white</span><span class="s1">;</span>
+            <span class="s2">padding</span><span class="s1">: </span><span class="s5">20</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">border</span><span class="s1">: </span><span class="s5">1</span><span class="s3">px solid lightgray</span><span class="s1">;</span>
+            <span class="s2">border-radius</span><span class="s1">: </span><span class="s5">5</span><span class="s3">px</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">products </span><span class="s1">{</span>
+            <span class="s2">display</span><span class="s1">: </span><span class="s3">flex</span><span class="s1">;</span>
+            <span class="s2">flex-wrap</span><span class="s1">: </span><span class="s3">wrap</span><span class="s1">;</span>
+            <span class="s2">gap</span><span class="s1">: </span><span class="s5">20</span><span class="s3">px</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">products article </span><span class="s1">{</span>
+            <span class="s2">flex</span><span class="s1">: </span><span class="s5">1 1 </span><span class="s0">calc</span><span class="s1">(</span><span class="s5">30</span><span class="s1">%);</span>
+            <span class="s2">min-width</span><span class="s1">: </span><span class="s5">220</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">background</span><span class="s1">: </span><span class="s3">white</span><span class="s1">;</span>
+            <span class="s2">border</span><span class="s1">: </span><span class="s5">1</span><span class="s3">px solid lightgray</span><span class="s1">;</span>
+            <span class="s2">border-radius</span><span class="s1">: </span><span class="s5">8</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">padding</span><span class="s1">: </span><span class="s5">10</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">text-align</span><span class="s1">: </span><span class="s3">center</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">products article</span><span class="s1">:</span><span class="s0">hover </span><span class="s1">{</span>
+            <span class="s2">box-shadow</span><span class="s1">: </span><span class="s5">0 5</span><span class="s3">px </span><span class="s5">15</span><span class="s3">px </span><span class="s0">rgba</span><span class="s1">(</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0.1</span><span class="s1">);</span>
+            <span class="s2">transform</span><span class="s1">: </span><span class="s0">scale</span><span class="s1">(</span><span class="s5">1.05</span><span class="s1">);</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">products img </span><span class="s1">{</span>
+            <span class="s2">max-width</span><span class="s1">: </span><span class="s5">100</span><span class="s1">%;</span>
+            <span class="s2">height</span><span class="s1">: </span><span class="s5">180</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">object-fit</span><span class="s1">: </span><span class="s3">contain</span><span class="s1">;</span>
+            <span class="s2">border-radius</span><span class="s1">: </span><span class="s5">6</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">margin-bottom</span><span class="s1">: </span><span class="s5">10</span><span class="s3">px</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">full-width-article </span><span class="s1">{</span>
+            <span class="s2">flex</span><span class="s1">: </span><span class="s5">1 1 100</span><span class="s1">%;</span>
+            <span class="s2">text-align</span><span class="s1">: </span><span class="s3">center</span><span class="s1">;</span>
+            <span class="s2">padding</span><span class="s1">: </span><span class="s5">10</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">border</span><span class="s1">: </span><span class="s5">1</span><span class="s3">px solid lightgray</span><span class="s1">;</span>
+            <span class="s2">border-radius</span><span class="s1">: </span><span class="s5">8</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">background</span><span class="s1">: </span><span class="s3">white</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">banner </span><span class="s1">{</span>
+            <span class="s2">width</span><span class="s1">: </span><span class="s5">100</span><span class="s1">%;</span>
+            <span class="s2">height</span><span class="s1">: </span><span class="s3">auto</span><span class="s1">;</span>
+            <span class="s2">max-height</span><span class="s1">: </span><span class="s5">200</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">object-fit</span><span class="s1">: </span><span class="s3">cover</span><span class="s1">;</span>
+            <span class="s2">margin-bottom</span><span class="s1">: </span><span class="s5">5</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">border-radius</span><span class="s1">: </span><span class="s5">8</span><span class="s3">px</span><span class="s1">;</span>
+            <span class="s2">border</span><span class="s1">: </span><span class="s5">1</span><span class="s3">px solid lightgray</span><span class="s1">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.</span><span class="s0">full-width-article</span><span class="s1">:</span><span class="s0">hover </span><span class="s1">{</span>
+            <span class="s2">box-shadow</span><span class="s1">: </span><span class="s5">0 5</span><span class="s3">px </span><span class="s5">15</span><span class="s3">px </span><span class="s0">rgba</span><span class="s1">(</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0</span><span class="s1">,</span><span class="s5">0.1</span><span class="s1">);</span>
+            <span class="s2">transform</span><span class="s1">: </span><span class="s0">scale</span><span class="s1">(</span><span class="s5">1.01</span><span class="s1">);</span>
+        <span class="s1">}</span>
+
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+
+<span class="s4">&lt;!-- Header --&gt;</span>
+<span class="s0">&lt;header&gt;</span>
+    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/HiTech Logo Transparent.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;HiTech Store Logo&quot; </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">height</span><span class="s1">:</span><span class="s5">150</span><span class="s3">px</span><span class="s1">; </span><span class="s2">width</span><span class="s1">: </span><span class="s5">150</span><span class="s3">px</span><span class="s1">; </span><span class="s2">filter</span><span class="s1">:</span><span class="s0">hue-rotate</span><span class="s1">(</span><span class="s5">60</span><span class="s3">deg</span><span class="s1">)</span><span class="s3">&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;div&gt;</span>
+        <span class="s0">&lt;h1&gt;</span><span class="s1">HiTech Store</span><span class="s0">&lt;/h1&gt;</span>
+        <span class="s0">&lt;p&gt;&lt;em&gt;</span><span class="s1">Your one-stop shop for all tech gadgets</span><span class="s0">&lt;/em&gt;&lt;/p&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/header&gt;</span>
+
+<span class="s4">&lt;!-- Main Layout --&gt;</span>
+<span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+    <span class="s4">&lt;!-- Navigation --&gt;</span>
+    <span class="s0">&lt;nav&gt;</span>
+        <span class="s0">&lt;ul&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Home</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">About Us</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Shopping Cart</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Products</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Login</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="s0">&lt;li&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Contact Us</span><span class="s0">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="s0">&lt;/ul&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+
+    <span class="s4">&lt;!-- Main Section --&gt;</span>
+    <span class="s0">&lt;main&gt;</span>
+        <span class="s0">&lt;h2&gt;</span><span class="s1">Current Product Sales</span><span class="s0">&lt;/h2&gt;</span>
+
+        <span class="s4">&lt;!-- Smartphones --&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;category&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;h3&gt;</span><span class="s1">Featured Smartphones</span><span class="s0">&lt;/h3&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;products&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Iphone 16 Pro Max.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;iPhone 16 Pro Max&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">iPhone 16 Pro Max</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,199</span><span class="s0">&lt;/p&gt;</span>
+                    <span class="s0">&lt;p&gt;</span><span class="s1">Trade-in eligible.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Samsung Galaxy S26 Ultra.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Samsung Galaxy S26 Ultra&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">Samsung Galaxy S26 Ultra</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,299</span><span class="s0">&lt;/p&gt;</span>
+                    <span class="s0">&lt;p&gt;</span><span class="s1">Trade-in eligible.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Google Pixel 10 Pro.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Google Pixel 10 Pro&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">Google Pixel 10 Pro</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,099</span><span class="s0">&lt;/p&gt;</span>
+                    <span class="s0">&lt;p&gt;</span><span class="s1">Trade-in eligible.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s4">&lt;!-- Laptops --&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;category&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;h3&gt;</span><span class="s1">Featured Laptops</span><span class="s0">&lt;/h3&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;products&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/MacBook Pro.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;MacBook Pro&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">MacBook Pro</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,599.99</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">Lenovo ThinkPad X1 2-in-1 Gen 10 Aura Edition</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,664.96</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Dell XPS 14.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Dell XPS 14&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;h4&gt;</span><span class="s1">Dell XPS 14</span><span class="s0">&lt;/h4&gt;</span>
+                    <span class="s0">&lt;p&gt;&lt;b&gt;</span><span class="s1">Price:</span><span class="s0">&lt;/b&gt; </span><span class="s1">Starting $1,399.99</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+
+        <span class="s4">&lt;!-- Accessories --&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;category&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;h3&gt;</span><span class="s1">Accessories Bundle</span><span class="s0">&lt;/h3&gt;</span>
+            <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;full-width-article&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;article&gt;</span>
+                    <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/Accessories Bundle.jpg&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Accessories Bundle&quot; </span><span class="s2">class</span><span class="s3">=&quot;banner&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;p&gt;</span><span class="s1">Buy one accessory, get </span><span class="s0">&lt;strong&gt;</span><span class="s1">10% off</span><span class="s0">&lt;/strong&gt; </span><span class="s1">on second accessory. Includes chargers, headphones, cases, and more.</span><span class="s0">&lt;/p&gt;</span>
+                <span class="s0">&lt;/article&gt;</span>
+            <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/main&gt;</span>
+
+    <span class="s4">&lt;!-- Aside --&gt;</span>
+    <span class="s0">&lt;aside&gt;</span>
+        <span class="s0">&lt;h2&gt;</span><span class="s1">Special Offers</span><span class="s0">&lt;/h2&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;marketing&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;p&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt; </span><span class="s1">Create an account today and </span><span class="s0">&lt;strong&gt;</span><span class="s1">save 15%</span><span class="s0">&lt;/strong&gt; </span><span class="s1">on your first order!</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+            <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot; </span><span class="s2">class</span><span class="s3">=&quot;signUp&quot; </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">color</span><span class="s1">: </span><span class="s3">white&quot;</span><span class="s0">&gt;</span><span class="s1">Sign Up Now </span><span class="s0">&lt;/a&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;marketing&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;p&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt; &lt;strong&gt;</span><span class="s1">Exclusive Offer:</span><span class="s0">&lt;/strong&gt; </span><span class="s1">Spend $1000 and get $100 back!</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;marketing&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;img </span><span class="s2">src</span><span class="s3">=&quot;Images/50 Off.png&quot; </span><span class="s2">alt</span><span class="s3">=&quot;Up to 50% Off&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;p </span><span class="s2">style</span><span class="s3">=&quot;</span><span class="s2">margin-top</span><span class="s1">: </span><span class="s5">10</span><span class="s3">px&quot;</span><span class="s0">&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt; </span><span class="s1">Check out our limited-time deals. Up to 50% off. Use code </span><span class="s0">&lt;b&gt;</span><span class="s1">SPECIALDAY</span><span class="s0">&lt;/b&gt;&lt;/a&gt;&lt;/p&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/aside&gt;</span>
+<span class="s0">&lt;/div&gt;</span>
+
+<span class="s4">&lt;!-- Footer --&gt;</span>
+<span class="s0">&lt;footer&gt;</span>
+    <span class="s0">&lt;p&gt;&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Terms of Use</span><span class="s0">&lt;/a&gt; </span><span class="s1">| </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Cookie Policy</span><span class="s0">&lt;/a&gt; </span><span class="s1">| </span><span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;#&quot;</span><span class="s0">&gt;</span><span class="s1">Privacy Policy</span><span class="s0">&lt;/a&gt;&lt;/p&gt;</span>
+    <span class="s0">&lt;p&gt;</span><span class="s6">&amp;copy; </span><span class="s1">2025 HiTech Store. All Rights Reserved.</span><span class="s0">&lt;/p&gt;</span>
+<span class="s0">&lt;/footer&gt;</span>
+
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>
