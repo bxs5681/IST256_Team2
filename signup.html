@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - HiTech Store</title>
-    <!-- Bootstrap CSS -->
-    <link rel="bootstrap" href="bootstrap-5.3.8-dist/css/bootstrap.min.css" >
+    <!-- Homepage styling -->
     <link rel="stylesheet" href="Storefront_Page_Layout.css">
+    <!-- Bootstrap signup page styling -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <!-- Script for signup validation -->
+    <script src="signupValidation.js"></script>
     <style>
         /* Main headers*/
         main h2 {
@@ -26,7 +29,7 @@
             background: white;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin: 20px 0;
         }
 
@@ -36,13 +39,13 @@
             text-align: center;
         }
     </style>
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
 </head>
 <body>
 
 <!-- Header -->
 <header>
-    <a href="index.html"> <img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo" style="height:150px; width: 150px; filter:hue-rotate(60deg)"> </a>
+    <a href="index.html"> <img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo"
+                               style="height:150px; width: 150px; filter:hue-rotate(60deg)"> </a>
     <div>
         <h1>HiTech Store</h1>
         <p><em>Your one-stop shop for all tech gadgets</em></p>
@@ -70,39 +73,47 @@
         <div class="signup-form">
             <h3 class="form-title">Create Your Account</h3>
 
-            <form style="padding-left: 50px; padding-right: 50px;">
+            <form id="signupForm" style="padding-left: 50px; padding-right: 50px;" novalidate
+                  onsubmit="return validateForm()">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    <div class="error-message" id="usernameError"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <div class="error-message" id="emailError"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
-                    <div class="form-text">Must be at least 8 characters long.</div>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    <div class="error-message" id="passwordError"></div>
                 </div>
 
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                    <div class="error-message" id="confirmPasswordError"></div>
                 </div>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="terms" required>
-                    <label class="form-check-label" for="terms">I agree to the <a href="#" style="text-decoration: none">Terms & Conditions </a> </label>
+                    <input type="checkbox" class="form-check-input" id="terms">
+                    <label class="form-check-label" for="terms">I agree to the <a href="#">
+                        Term & Conditions </a> </label>
+                    <div class="error-message" id="termsError"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">Create Account</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">
+                    Create Account
+                </button>
 
             </form>
 
             <div class="mt-4">
-                <p style="margin-left: 50px">Already have an account? <a href="#">Login here</a> </p>
+                <p style="margin-left: 50px">Already have an account? <a href="#">Login here</a></p>
             </div>
         </div>
     </main>
