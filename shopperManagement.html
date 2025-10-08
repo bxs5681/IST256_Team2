@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HiTech Store</title>
+    <!-- Homepage styling -->
+    <link rel="stylesheet" href="Storefront_Page_Layout.css">
+    <!-- Bootstrap signup page styling -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <!-- Script for signup validation -->
+    <script src="signupValidation.js"></script>
+    <style>
+        /* Main headers*/
+        main h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8rem;
+        }
+
+        main h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        /* Signup Form Styling */
+        .signup-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .form-title {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <a href="index.html"> <img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo"
+                               style="height:150px; width: 150px; filter:hue-rotate(60deg)"> </a>
+    <div>
+        <h1>HiTech Store</h1>
+        <p><em>Your one-stop shop for all tech gadgets</em></p>
+    </div>
+</header>
+
+<!-- Main Layout -->
+<div class="container">
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+        <h2>Shopper Management</h2>
+
+        <div class="signup-form">
+            <h3 class="form-title">Shopper Information</h3>
+
+            <form id="shopperManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate
+                  onsubmit="return validateShopperManagementForm()">
+
+                <div class="mb-3">
+                    <label for="shopperEmail" class="form-label"><strong>Shopper Email Address:</strong></label>
+                    <input type="email" class="form-control" id="shopperEmail" placeholder="Enter your email">
+                    <div class="error-message" id="shopperEmailError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="shopperName" class="form-label"><strong>Shopper Name:</strong></label>
+                    <input type="text" class="form-control" id="shopperName" placeholder="Enter your full name">
+                    <div class="error-message" id="shopperNameError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="shopperPhoneNumber" class="form-label"><strong>Shopper Contact Phone Number:</strong></label>
+                    <input type="number" class="form-control" id="shopperPhoneNumber" placeholder="Enter your phone number">
+                    <div class="error-message" id="shopperPhoneNumberError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="shopperAge" class="form-label"><strong>Shopper Age:</strong></label>
+                    <input type="number" class="form-control" id="shopperAge" placeholder="Enter your age">
+                    <div class="error-message" id="shopperAgeError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="shopperAddress" class="form-label"><strong>Shopper Address:</strong></label>
+                    <input type="number" class="form-control" id="shopperAddress" placeholder="Enter your address">
+                    <div class="error-message" id="shopperAddressError"></div>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="terms">
+                    <label class="form-check-label" for="terms">I agree to the <a href="#">
+                        Term & Conditions </a> </label>
+                    <div class="error-message" id="termsError"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">
+                    Create Account
+                </button>
+
+            </form>
+
+            <div class="mt-4">
+                <p style="margin-left: 50px">Already have an account? <a href="#">Login here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Aside -->
+    <aside>
+        <h2>Member Perks</h2>
+        <div class="marketing">
+            <p><a href="#"> <strong>15% Off:</strong> Save on your first order when you create an account!</a></p>
+        </div>
+        <div class="marketing">
+            <p><a href="#"> <strong>Wish Lists:</strong> Save items for later and get notified when prices drop</a></p>
+        </div>
+        <div class="marketing">
+            <p><a href="#"> <strong>Order Tracking:</strong> Track your orders in real-time</a></p>
+        </div>
+        <div class="marketing">
+            <p><a href="#"> <strong>Exclusive Deals:</strong> Get access to members-only sales and promotions</a></p>
+        </div>
+    </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a> | <a href="#">Privacy Policy</a></p>
+    <p>&copy; 2025 HiTech Store. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
