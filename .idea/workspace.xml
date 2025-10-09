@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="ShopperManagement HTML, CSS, Bootstrap">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="fixed fields">
       <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +86,7 @@
       <workItem from="1756583538869" duration="1102000" />
       <workItem from="1756584679667" duration="228000" />
       <workItem from="1756584976438" duration="26397000" />
-      <workItem from="1759889137681" duration="3121000" />
+      <workItem from="1759889137681" duration="4481000" />
     </task>
     <task id="LOCAL-00001" summary="ShopperManagement HTML, CSS, Bootstrap">
       <option name="closed" value="true" />
@@ -97,7 +96,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759967646270</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Task Assignment Header">
+      <option name="closed" value="true" />
+      <created>1759968240332</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1759968240332</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed fields">
+      <option name="closed" value="true" />
+      <created>1760050643862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760050643862</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +120,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ShopperManagement HTML, CSS, Bootstrap" />
-    <option name="LAST_COMMIT_MESSAGE" value="ShopperManagement HTML, CSS, Bootstrap" />
+    <MESSAGE value="Task Assignment Header" />
+    <MESSAGE value="fixed fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed fields" />
   </component>
 </project>
