@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="fixed fields">
-      <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
-    </list>
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="fixed header" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +84,7 @@
       <workItem from="1756583538869" duration="1102000" />
       <workItem from="1756584679667" duration="228000" />
       <workItem from="1756584976438" duration="26397000" />
-      <workItem from="1759889137681" duration="4481000" />
+      <workItem from="1759889137681" duration="4535000" />
     </task>
     <task id="LOCAL-00001" summary="ShopperManagement HTML, CSS, Bootstrap">
       <option name="closed" value="true" />
@@ -112,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760050643862</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed header">
+      <option name="closed" value="true" />
+      <created>1760050797739</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760050797739</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +128,7 @@
     <MESSAGE value="ShopperManagement HTML, CSS, Bootstrap" />
     <MESSAGE value="Task Assignment Header" />
     <MESSAGE value="fixed fields" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed fields" />
+    <MESSAGE value="fixed header" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed header" />
   </component>
 </project>
