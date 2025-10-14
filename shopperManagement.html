@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
     <!-- Script for signup validation -->
     <script src="signupValidation.js"></script>
+    <script src="shopperManagementValidation.js"></script>
+
+    <!-- JSON handler (displays JSON after successful validation) -->
+    <script src="shopperJSON.js" defer></script>
+
     <style>
         /* Main headers*/
         main h2 {
@@ -43,6 +48,19 @@
             color: #2c3e50;
             margin-bottom: 25px;
             text-align: center;
+        }
+
+        /* JSON output box */
+        #jsonSection {
+            margin-top: 24px;
+        }
+        #jsonOutput {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            white-space: pre-wrap;
         }
     </style>
 </head>
@@ -80,7 +98,7 @@
             <h3 class="form-title">Shopper Information</h3>
 
             <form id="shopperManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate
-                  onsubmit="return validateShopperManagementForm()">
+                  onsubmit="return handleShopperSubmit(event)">
 
                 <div class="mb-3">
                     <label for="shopperEmail" class="form-label"><strong>Shopper Email Address:</strong></label>
@@ -125,9 +143,14 @@
 
             </form>
 
-            <div class="mt-4">
-                <p style="margin-left: 50px">Already have an account? <a href="#">Login here</a></p>
-            </div>
+            <!-- Shows JSON after successful submit -->
+            <section id="jsonSection" class="mt-4">
+                <h4>Submitted Shopper JSON</h4>
+                <div id="jsonOutput" aria-live="polite"></div>
+                <div class="mt-2">
+                    <a href="shopperData.json" target="_blank" rel="noopener">View shopperData.json template</a>
+                </div>
+            </section>
         </div>
     </main>
 
