@@ -34,7 +34,14 @@
             margin-bottom: 15px;
         }
 
+        /* Nav */
+        nav {
+            flex: 1 1 16%;
+        }
+
+        /* Main form */
         .formSetup {
+            flex: 1 1 55%;
             background: white;
             padding: 30px;
             border-radius: 8px;
@@ -46,6 +53,15 @@
             color: #2c3e50;
             margin-bottom: 25px;
             text-align: center;
+        }
+
+        /* Aside */
+        aside {
+            flex: 1 1 25%;
+            min-width: 300px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* JSON output box */
@@ -137,13 +153,13 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">
-                    Create Account
+                    Submit
                 </button>
 
             </form>
 
             <!-- Shows JSON after successful submit -->
-            <section id="jsonSection" class="mt-4">
+            <section id="jsonSection" class="mt-4" style="margin-top: 150px;">
                 <h4>Submitted Shopper JSON</h4>
                 <div id="jsonOutput" aria-live="polite"></div>
                 <div class="mt-2">
@@ -156,11 +172,15 @@
 
     <!-- Aside -->
     <aside>
-        <h3>Saved Shoppers</h3>
-        <div class="mb-3">
-            <label for="shopperSearch" class="form-label"><strong>Search Shopper:</strong></label>
-            <input type="text" class="form-control" id="shopperSearch" placeholder="Enter Shopper Name">
-            <div class="error-message" id="shopperSearchError"></div>
+        <div class="search-section">
+            <h3>Shopper Search</h3>
+            <div class="mb-3">
+                <label for="shopperSearch" class="form-label"><strong>Search Shoppers:</strong></label>
+                <input type="text" class="form-control" id="shopperSearch"
+                       placeholder="Enter Shopper name or email address">
+                <div class="error-message" id="shopperSearchError"></div>
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="searchButton">Search</button>
         </div>
     </aside>
 </div>

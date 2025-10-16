@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="xml">
-      <change afterPath="$PROJECT_DIR$/productData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/productJSON.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/productManagementValidation.js" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="product Management">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760050797739</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="product Management">
+      <option name="closed" value="true" />
+      <created>1760583930149</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1760583930149</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +144,7 @@
     <MESSAGE value="Task Assignment Header" />
     <MESSAGE value="fixed fields" />
     <MESSAGE value="fixed header" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed header" />
+    <MESSAGE value="product Management" />
+    <option name="LAST_COMMIT_MESSAGE" value="product Management" />
   </component>
 </project>
