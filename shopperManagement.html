@@ -9,13 +9,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - HiTech Store</title>
+    <title>HiTech Store - Shopper Management</title>
     <!-- Homepage styling -->
     <link rel="stylesheet" href="Storefront_Page_Layout.css">
-    <!-- Bootstrap signup page styling -->
+    <!-- Bootstrap page styling -->
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
-    <!-- Script for signup validation -->
-    <script src="signupValidation.js"></script>
+    <!-- Script for shopperManagement validation -->
     <script src="shopperManagementValidation.js"></script>
 
     <!-- JSON handler (displays JSON after successful validation) -->
@@ -35,8 +34,7 @@
             margin-bottom: 15px;
         }
 
-        /* Signup Form Styling */
-        .signup-form {
+        .formSetup {
             background: white;
             padding: 30px;
             border-radius: 8px;
@@ -80,12 +78,13 @@
 <div class="container">
     <!-- Navigation -->
     <nav>
-        <ul>
+        <ul style = "padding-left: 10px;">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="signup.html">Login</a></li>
+            <li><a href="shopperManagement.html">Shopper Management</a></li>
+            <li><a href="productManagement.html">Products</a></li>
             <li><a href="#">Shopping Cart</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
     </nav>
@@ -94,7 +93,7 @@
     <main>
         <h2>Shopper Management</h2>
 
-        <div class="signup-form">
+        <div class="formSetup">
             <h3 class="form-title">Shopper Information</h3>
 
             <form id="shopperManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate
@@ -151,23 +150,17 @@
                     <a href="shopperData.json" target="_blank" rel="noopener">View shopperData.json template</a>
                 </div>
             </section>
+
         </div>
     </main>
 
     <!-- Aside -->
     <aside>
-        <h2>Member Perks</h2>
-        <div class="marketing">
-            <p><a href="#"> <strong>15% Off:</strong> Save on your first order when you create an account!</a></p>
-        </div>
-        <div class="marketing">
-            <p><a href="#"> <strong>Wish Lists:</strong> Save items for later and get notified when prices drop</a></p>
-        </div>
-        <div class="marketing">
-            <p><a href="#"> <strong>Order Tracking:</strong> Track your orders in real-time</a></p>
-        </div>
-        <div class="marketing">
-            <p><a href="#"> <strong>Exclusive Deals:</strong> Get access to members-only sales and promotions</a></p>
+        <h3>Saved Shoppers</h3>
+        <div class="mb-3">
+            <label for="shopperSearch" class="form-label"><strong>Search Shopper:</strong></label>
+            <input type="text" class="form-control" id="shopperSearch" placeholder="Enter Shopper Name">
+            <div class="error-message" id="shopperSearchError"></div>
         </div>
     </aside>
 </div>

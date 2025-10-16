@@ -1,0 +1,212 @@
+<!-- Group Member Tasks:
+    Binesh - HTML (Page Structure), CSS (Page Style and Cosmetics), Bootstrap (Professional look), JavaScript (page behaviors and field integrity checks)
+    Kyle - JSON Shopper Document collection (containing the details from the new/update shopper details form)
+    Vedang - jQuery (Search and update the JSON product document)
+    -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiTech Store - Product Management</title>
+    <!-- Homepage styling -->
+    <link rel="stylesheet" href="Storefront_Page_Layout.css">
+    <!-- Bootstrap page styling -->
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <!-- Script for productManagement validation -->
+    <script src="productManagementValidation.js"></script>
+    <!-- JSON handler (displays JSON after successful validation) -->
+    <script src="productJSON.js" defer></script>
+
+    <style>
+        /* Main headers*/
+        main h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8rem;
+        }
+
+        main h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .formSetup {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+
+        .form-title {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* JSON output box */
+        #jsonSection {
+            margin-top: 24px;
+        }
+
+        #jsonOutput {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <a href="index.html"> <img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo"
+                               style="height:150px; width: 150px; filter:hue-rotate(60deg)"> </a>
+    <div>
+        <h1>HiTech Store</h1>
+        <p><em>Your one-stop shop for all tech gadgets</em></p>
+    </div>
+</header>
+
+<!-- Main Layout -->
+<div class="container">
+    <!-- Navigation -->
+    <nav>
+        <ul style="padding-left: 10px;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="signup.html">Login</a></li>
+            <li><a href="shopperManagement.html">Shopper Management</a></li>
+            <li><a href="productManagement.html">Products</a></li>
+            <li><a href="#">Shopping Cart</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Section -->
+    <main>
+        <h2>Product Management</h2>
+
+        <div class="formSetup">
+            <h3 class="form-title">Product Information</h3>
+
+            <form id="productManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate
+                  onsubmit="return validateProductManagementForm()">
+
+                <div class="mb-3">
+                    <label for="productId" class="form-label"><strong>Product ID:</strong></label>
+                    <input type="text" class="form-control" id="productId" placeholder="Enter product ID">
+                    <div class="error-message" id="productIdError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productDescription" class="form-label"><strong>Product Description:</strong></label>
+                    <input type="text" class="form-control" id="productDescription"
+                           placeholder="Enter product description">
+                    <div class="error-message" id="productDescriptionError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productCategory" class="form-label"><strong>Product Category:</strong></label>
+                    <select class="form-control" id="productCategory">
+                        <option value="">Select Category</option>
+                        <option value="Computers & Accessories">🖥️ Computers & Accessories</option>
+                        <option value="Mobile Devices">📱 Mobile Devices</option>
+                        <option value="Audio & Music">🎧 Audio & Music</option>
+                        <option value="Cameras & Photography">📷 Cameras & Photography</option>
+                        <option value="Home Entertainment">📺 Home Entertainment</option>
+                        <option value="Gaming">🎮 Gaming</option>
+                        <option value="Smart Home & IoT">🏠 Smart Home & IoT</option>
+                        <option value="Cables & Components">🔌 Cables & Components</option>
+                        <option value="Office Tech">🖨️ Office Tech</option>
+                        <option value="Tech Lifestyle & Wearables">🧳 Tech Lifestyle & Wearables</option>
+                    </select>
+                    <div class="error-message" id="productCategoryError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productSubcategory" class="form-label"><strong>Product Subcategory:</strong></label>
+                    <select class="form-control" id="productSubcategory" name="productsubcategory">
+                        <option value="">Select Subcategory</option>
+                        <!-- Subcategories will be populated based on category selection -->
+                    </select>
+                    <div class="error-message" id="productSubcategoryError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productUnit" class="form-label"><strong>Product Unit of Measure:</strong></label>
+                    <select class="form-control" id="productUnit">
+                        <option value="">Select Unit</option>
+                        <option value="Piece">Piece</option>
+                        <option value="Kilogram">Kilogram</option>
+                        <option value="Pound">Pound</option>
+                        <option value="Meter">Meter</option>
+                        <option value="Box">Box</option>
+                    </select>
+                    <div class="error-message" id="productUnitError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label"><strong>Product Price:</strong></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" class="form-control" id="productPrice" placeholder="0.00" step="0.01"
+                               min="0">
+                    </div>
+                    <div class="error-message" id="productPriceError"></div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="productWeight" class="form-label"><strong>Product Weight (lb):</strong></label>
+                    <input type="number" class="form-control" id="productWeight" placeholder="Enter product weight"
+                           step="0.01" min="0">
+                    <div class="error-message" id="productWeightError"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">
+                    Save Product
+                </button>
+
+            </form>
+
+            <!-- Shows JSON after successful submit -->
+            <section id="jsonSection" class="mt-4">
+                <h4>Submitted Product JSON</h4>
+                <div id="jsonOutput" aria-live="polite"></div>
+                <div class="mt-2">
+                    <a href="productData.json" target="_blank" rel="noopener">View productData.json template</a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Aside -->
+    <aside>
+        <div class="search-section">
+            <h3>Product Search</h3>
+            <div class="mb-3">
+                <label for="productSearch" class="form-label"><strong>Search Products:</strong></label>
+                <input type="text" class="form-control" id="productSearch"
+                       placeholder="Enter Product ID or Description">
+                <div class="error-message" id="productSearchError"></div>
+            </div>
+            <button type="button" class="btn btn-outline-primary" id="searchButton">Search</button>
+        </div>
+    </aside>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p><a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a> | <a href="#">Privacy Policy</a></p>
+    <p>&copy; 2025 HiTech Store. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="Task Assignment Header">
-      <change afterPath="$PROJECT_DIR$/shopperData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopperJSON.js" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="xml">
+      <change afterPath="$PROJECT_DIR$/productData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productJSON.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productManagementValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="tsconfig.json" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -36,19 +44,16 @@
     &quot;assignee&quot;: &quot;bxs5681&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/bxs5681/IST256_Team2.git",
-    "accountId": "92de3f78-1c08-49a5-8c12-9bc10f08737d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bxs5681/IST256_Team2&quot;,
+    &quot;accountId&quot;: &quot;a7a0a4d6-ee41-4d91-bfe6-68c9ea671037&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="321MHZ9PLpvE8udfTX42ybzTSfZ" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,7 +65,6 @@
     "JavaScript Debug.index.html.executor": "Run",
     "JavaScript Debug.shopperManagement.html.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Node.js.shopperManagementValidation.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -70,9 +74,9 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "C:/Users/kyleb/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.20.0/node",
+    "nodejs_interpreter_path": "C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.nodejs",
+    "settings.editor.selected.configurable": "configurable.group.editor",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -80,7 +84,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126" />
       </set>
     </attachedChunks>
   </component>
@@ -94,8 +98,7 @@
       <workItem from="1756583538869" duration="1102000" />
       <workItem from="1756584679667" duration="228000" />
       <workItem from="1756584976438" duration="26397000" />
-      <workItem from="1759889137681" duration="4143000" />
-      <workItem from="1760399749572" duration="1692000" />
+      <workItem from="1759889137681" duration="4535000" />
     </task>
     <task id="LOCAL-00001" summary="ShopperManagement HTML, CSS, Bootstrap">
       <option name="closed" value="true" />
@@ -113,7 +116,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759968240332</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed fields">
+      <option name="closed" value="true" />
+      <created>1760050643862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760050643862</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fixed header">
+      <option name="closed" value="true" />
+      <created>1760050797739</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760050797739</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +141,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ShopperManagement HTML, CSS, Bootstrap" />
     <MESSAGE value="Task Assignment Header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task Assignment Header" />
+    <MESSAGE value="fixed fields" />
+    <MESSAGE value="fixed header" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed header" />
   </component>
 </project>
