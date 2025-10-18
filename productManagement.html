@@ -16,8 +16,49 @@
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
     <!-- Script for productManagement validation -->
     <script src="productManagementValidation.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <!-- JSON handler (displays JSON after successful validation) -->
     <script src="productJSON.js" defer></script>
+
+    <!-- place inside the ONE <head> ... </head>, before productJSON.js -->
+<script type="application/json" id="productDataSeed">
+[
+  {
+    "productId": "1",
+    "productDescription": "MacBook Pro 14-inch (M3 Pro)",
+    "productCategory": "Computers & Accessories",
+    "productSubcategory": "Laptops",
+    "productUnit": "Piece",
+    "productPrice": "1599.99",
+    "productWeight": "3.50",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "productId": "2",
+    "productDescription": "iPhone 16 Pro Max 256GB",
+    "productCategory": "Mobile Devices",
+    "productSubcategory": "Smartphones",
+    "productUnit": "Piece",
+    "productPrice": "1199.00",
+    "productWeight": "0.48",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "productId": "3",
+    "productDescription": "65W USB-C Fast Charger",
+    "productCategory": "Cables & Components",
+    "productSubcategory": "Adapters & Converters",
+    "productUnit": "Piece",
+    "productPrice": "29.99",
+    "productWeight": "0.20",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  }
+]
+
+</script>
+
 
     <style>
         /* Main headers*/
@@ -196,7 +237,7 @@
                 <h4>Submitted Product JSON</h4>
                 <div id="jsonOutput" aria-live="polite"></div>
                 <div class="mt-2">
-                    <a href="productData.json" target="_blank" rel="noopener">View productData.json template</a>
+                    
                 </div>
             </section>
 
