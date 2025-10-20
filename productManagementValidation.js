@@ -68,16 +68,8 @@ function validateProductManagementForm() {
         productWeight: form.productWeight.value ? parseFloat(form.productWeight.value).toFixed(2) : null,
         createdAt: new Date().toISOString()
     };
-
-    const list = JSON.parse(localStorage.getItem('products') || '[]');
-    list.push(productDoc);
-    localStorage.setItem('products', JSON.stringify(list));
-
     // Display JSON output
     displayProductJSON(productDoc);
-
-    alert('Product saved successfully!');
-    return true; // allow form submit
 }
 
 // Individual field validation

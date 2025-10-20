@@ -15,12 +15,12 @@
     <!-- Bootstrap page styling -->
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
     <!-- Script for productManagement validation -->
-    <script src="productManagementValidation.js"></script>
+    <script src="productManagementValidation.js?v=${Date.now()}"></script>
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- JSON handler (displays JSON after successful validation) -->
-    <script src="productJSON.js" defer></script>
+    <script src="productJSON.js?v=${Date.now()}" defer></script>
 
     <!-- place inside the ONE <head> ... </head>, before productJSON.js -->
 <script type="application/json" id="productDataSeed">
@@ -254,7 +254,11 @@
                        placeholder="Enter Product ID or Description">
                 <div class="error-message" id="productSearchError"></div>
             </div>
-            <button type="button" class="btn btn-outline-primary" id="searchButton">Search</button>
+            <div class="d-flex flex-row gap-2">
+                <button type="button" class="btn btn-outline-primary" id="searchButton">Search</button>
+                <button type="button" class="btn btn-danger" id="resetLocalStorage">Reset Product Storage</button>
+            </div>
+            <div id="resetMsg" style="color: green; margin-top: 8px;"></div>
         </div>
     </aside>
 </div>
