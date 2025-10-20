@@ -69,14 +69,14 @@ function validateProductManagementForm() {
         createdAt: new Date().toISOString()
     };
 
-    const list = JSON.parse(localStorage.getItem('products') || '[]');
-    list.push(productDoc);
-    localStorage.setItem('products', JSON.stringify(list));
+    //const list = JSON.parse(localStorage.getItem('products') || '[]');
+    //list.push(productDoc);
+    //localStorage.setItem('products', JSON.stringify(list));
 
     // Display JSON output
     displayProductJSON(productDoc);
 
-    alert('Product saved successfully!');
+    //('Product saved successfully!');
     return true; // allow form submit
 }
 

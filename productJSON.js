@@ -118,25 +118,46 @@
     seedIfNeeded();
     renderAllJSON();
 
-    // Search: Product ID only 
-    $('#searchButton').on('click', function () {
-      const term = ($('#productSearch').val() || '').trim();
-      $('#productSearchError').text('');
-      if (!term) {
-        $('#productSearchError').text('Enter a Product ID to search.');
-        return;
-      }
-      const list = readProducts();
-      const found = list.find(p => String(p.productId).toLowerCase() === term.toLowerCase());
-      if (found) {
-        fillForm(found);
-        renderFoundProductJSON(found); 
-      } else {
-        $('#productSearchError').text('No product found for that Product ID.');
-      }
-    });
+      // Search: Product ID OR Description (with numeric-safety)
+      $('#searchButton').on('click', function () {
+          const term = document.getElementById('productSearch').value.trim().toLowerCase();
+          $('#productSearchError').text('');
 
-    // Enter key triggers search
+          if (!term) {
+              $('#productSearchError').text('Enter a Product ID or Description to search.');
+              return;
+          }
+
+          const list = readProducts();
+
+          // Check if search is purely numeric → ID-only mode
+          const isNumeric = /^[0-9]+$/.test(term);
+
+          let found = null;
+
+          if (isNumeric) {
+              // ID-only search
+              found = list.find(p =>
+                  p.productId &&
+                  p.productId.toString().trim().toLowerCase() === term
+              );
+          } else {
+              // Description search allowed
+              found = list.find(p =>
+                  (p.productId && p.productId.toString().trim().toLowerCase() === term) ||
+                  (p.productDescription && p.productDescription.toLowerCase().includes(term))
+              );
+          }
+
+          if (found) {
+              fillForm(found);
+              renderFoundProductJSON(found);
+          } else {
+              $('#productSearchError').text('No product found for that Product ID or Description.');
+          }
+      });
+
+      // Enter key triggers search
     $('#productSearch').on('keydown', function (e) {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -153,8 +174,16 @@
       }
       const doc = buildProductFromForm();
       upsertProduct(doc);
-      renderAllJSON(); 
-      return false;
+      renderAllJSON();
+      alert('Product saved successfully!');
+        return false;
     });
+      // Reset localStorage when clicking Reset button
+      $('#resetLocalStorage').on('click', function () {
+          localStorage.removeItem('products');
+          $('#resetMsg').text('Product storage cleared. Refreshing...');
+          setTimeout(() => location.reload(), 800);
+      });
+
   });
 })();
