@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="product Management">
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="product Management page redesigned - Add products on the aside">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/productJSON.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760583930149</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="product Management page redesigned - Add products on the aside">
+      <option name="closed" value="true" />
+      <created>1761017967341</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761017967341</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,6 +152,7 @@
     <MESSAGE value="fixed fields" />
     <MESSAGE value="fixed header" />
     <MESSAGE value="product Management" />
-    <option name="LAST_COMMIT_MESSAGE" value="product Management" />
+    <MESSAGE value="product Management page redesigned - Add products on the aside" />
+    <option name="LAST_COMMIT_MESSAGE" value="product Management page redesigned - Add products on the aside" />
   </component>
 </project>
