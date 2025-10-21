@@ -72,10 +72,7 @@ function validateProductManagementForm() {
     //const list = JSON.parse(localStorage.getItem('products') || '[]');
     //list.push(productDoc);
     //localStorage.setItem('products', JSON.stringify(list));
-
-    // Display JSON output
-    displayProductJSON(productDoc);
-
+    
     //('Product saved successfully!');
     return true; // allow form submit
 }
