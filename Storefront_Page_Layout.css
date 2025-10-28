@@ -95,7 +95,6 @@ aside h2 {
     text-decoration: underline;
 }
 
-/* Nav */
 nav ul {
     list-style: none;
 }
@@ -120,7 +119,6 @@ nav a:hover {
 }
 
 
-/* Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -139,7 +137,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Error style */
 .error-message {
     color: #FF0000;
     font-size: 0.875rem;
@@ -150,7 +147,6 @@ footer a:hover {
     border-color: #FF0000 !important;
 }
 
-/* For mobile use */
 @media (max-width: 900px) {
     .container {
         flex-direction: column;
@@ -168,4 +164,90 @@ footer a:hover {
     .full-width-article {
         flex: 1 1 100%;
     }
+}
+
+.page-section .card-like {
+  background: #ffffff;
+  border: 1px solid #E3E8EF;          /* faint grey border like the mock */
+  border-radius: 10px;                 /* soft rounded corners */
+  box-shadow:
+    0 1px 0 rgba(16, 24, 40, 0.02),
+    0 1px 2px rgba(16, 24, 40, 0.06);  /* very subtle elevation */
+  padding: 16px;
+  margin: 18px 0;
+}
+
+.page-section .card-like .form-select,
+.page-section .card-like .form-control,
+.page-section .card-like #qtyInput {
+  height: 44px;
+  border: 1px solid #D6DBE3;
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.page-section .card-like .form-label { 
+  font-weight: 600;
+  margin: 4px 0 6px;
+}
+.page-section .card-like #qtyInput { max-width: 260px; }
+.page-section .card-like #addBtn { 
+  display: inline-block;
+  margin-top: 12px;                    /* puts the blue button just under inputs */
+}
+
+.page-section .card-like table.table-like {
+  border: 1px solid #E3E8EF;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.page-section .table-like thead th {
+  background: #F7F8FA;                 /* light header strip */
+  border-bottom: 1px solid #E3E8EF;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+.page-section .table-like tbody td {
+  border-bottom: 1px solid #EEE;
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+.page-section .table-like tfoot td {
+  border-top: 1px solid #E3E8EF;
+  padding: 12px 14px;
+}
+.page-section .qty-input {
+  width: 90px;
+  height: 34px;
+  border: 1px solid #D6DBE3;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.page-section .btn-primary {
+  background: #2F58FF;
+  border: 1px solid #2F58FF;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 16px;
+}
+.page-section .btn-danger {
+  background: #DC3545;
+  border: 1px solid #DC3545;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: 600;
+}
+.page-section .btn-success {
+  background: #2FA94A;
+  border: 1px solid #27903F;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
 }
