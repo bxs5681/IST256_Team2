@@ -1,0 +1,113 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"293cc9c9-174b-4922-87ab-bc15b94a9786\" name=\"Changes\" comment=\"search implemented\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/productJSON.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/productJSON.js\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/productManagement.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/productManagement.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/productManagementValidation.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/productManagementValidation.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExportToHTMLSettings\">\r\n    <option name=\"printScope\" value=\"1\" />\r\n    <option name=\"OPEN_IN_BROWSER\" value=\"true\" />\r\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/exportToHTML\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"HTML File\" />\r\n        <option value=\"tsconfig.json\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;bxs5681&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/bxs5681/IST256_Team2&quot;,\r\n    &quot;accountId&quot;: &quot;a7a0a4d6-ee41-4d91-bfe6-68c9ea671037&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"321MHZ9PLpvE8udfTX42ybzTSfZ\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"JavaScript Debug.index.html.executor\": \"Run\",\r\n    \"JavaScript Debug.productManagement.html.executor\": \"Run\",\r\n    \"JavaScript Debug.shopperManagement.html.executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"junie.onboarding.icon.badge.shown\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_interpreter_path\": \"C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.editor\",\r\n    \"to.speed.mode.migration.done\": \"true\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"productManagement.html\" type=\"JavascriptDebugType\" temporary=\"true\" nameIsGenerated=\"true\" uri=\"http://localhost:63342/Storefront Home Page/productManagement.html\" useBuiltInWebServerPort=\"true\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JavaScript Debug.productManagement.html\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-WS-252.25557.126\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"293cc9c9-174b-4922-87ab-bc15b94a9786\" name=\"Changes\" comment=\"\" />\r\n      <created>1756583537822</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1756583537822</updated>\r\n      <workItem from=\"1756583538869\" duration=\"1102000\" />\r\n      <workItem from=\"1756584679667\" duration=\"228000\" />\r\n      <workItem from=\"1756584976438\" duration=\"26397000\" />\r\n      <workItem from=\"1759889137681\" duration=\"4535000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"ShopperManagement HTML, CSS, Bootstrap\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1759967646270</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1759967646270</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Task Assignment Header\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1759968240332</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1759968240332</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"fixed fields\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760050643862</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760050643862</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"fixed header\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760050797739</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760050797739</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"product Management\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760583930149</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760583930149</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"search implemented\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1760922478243</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1760922478243</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"ShopperManagement HTML, CSS, Bootstrap\" />\r\n    <MESSAGE value=\"Task Assignment Header\" />\r\n    <MESSAGE value=\"fixed fields\" />\r\n    <MESSAGE value=\"fixed header\" />\r\n    <MESSAGE value=\"product Management\" />\r\n    <MESSAGE value=\"JSON added\" />\r\n    <MESSAGE value=\"search implemented\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"search implemented\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0b8a61c0cf1aaf8e15a4228d98922ebab0d083fc)
++++ b/.idea/workspace.xml	(date 1761082445847)
+@@ -4,12 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="search implemented">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/productJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/productJSON.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/productManagementValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/productManagementValidation.js" afterDir="false" />
+-    </list>
++    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="search implemented" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -31,7 +26,6 @@
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-    <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+   &quot;lastFilter&quot;: {
+@@ -45,6 +39,9 @@
+     &quot;accountId&quot;: &quot;a7a0a4d6-ee41-4d91-bfe6-68c9ea671037&quot;
+   }
+ }</component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
++  </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 0
+ }</component>
+@@ -56,30 +53,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "JavaScript Debug.index.html.executor": "Run",
+-    "JavaScript Debug.productManagement.html.executor": "Run",
+-    "JavaScript Debug.shopperManagement.html.executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "master",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_interpreter_path": "C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "configurable.group.editor",
+-    "to.speed.mode.migration.done": "true",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
++    &quot;JavaScript Debug.productManagement.html.executor&quot;: &quot;Run&quot;,
++    &quot;JavaScript Debug.shopperManagement.html.executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
++    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="productManagement.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Storefront Home Page/productManagement.html" useBuiltInWebServerPort="true">
+       <method v="2" />
+@@ -157,7 +154,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1760922478243</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="search implemented">
++      <option name="closed" value="true" />
++      <created>1760923568142</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1760923568142</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">

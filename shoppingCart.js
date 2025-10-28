@@ -197,81 +197,101 @@
         const term = document.getElementById('productSearch').value.trim().toLowerCase();
         $('#productSearchError').text('');
 
+
+        // No ID will show everything
         if (!term) {
-            $('#productSearchError').text('Enter a Product ID or Description to search.');
+            renderAllProducts();
+            currentSearchTerm = '';
             return;
         }
+
 
         const products = readProducts();
         const isNumeric = /^[0-9]+$/.test(term);
 
-        let results = [];
 
+        let results = [];
         if (isNumeric) {
-            // ID search
+        // Numeric will match productId that *includes* the digits (e.g., "1" finds "10", "21")
             results = products.filter(p =>
-                p.productId && p.productId.toString().trim().toLowerCase() === term
+                p.productId && p.productId.toString().trim().toLowerCase().includes(term)
             );
         } else {
-            // Description search
-            results = products.filter(p =>
-                p.productDescription && p.productDescription.toLowerCase().includes(term)
-            );
+        // Text will match description (contains) OR exact/partial id string
+            results = products.filter(p => {
+                const idStr = (p.productId || '').toString().trim().toLowerCase();
+                const desc = (p.productDescription || '').toLowerCase();
+                return desc.includes(term) || idStr.includes(term);
+            });
         }
 
-        displaySearchResults(results);
+
+        displaySearchResults(results, { term });
         currentSearchTerm = term;
     }
 
-    // Display search results
-    function displaySearchResults(results) {
-        const resultsSection = document.getElementById('searchResultsSection');
-        const resultsEl = document.getElementById('searchResults');
+    function getAllProducts() {
+        return readProducts();
+    }
 
+    function renderAllProducts() {
+        const products = getAllProducts();
+        displaySearchResults(products, { showAll: true });
+    }
+
+    // Display search results
+    function displaySearchResults(results, opts = {}) {
+        const { term = '', showAll = false } = opts;
+        const resultsSection = document.getElementById('searchResultsSection');
+        const headerEl = document.getElementById('resultsHeader');
+        const resultsEl = document.getElementById('searchResults');
         if (!resultsEl) return;
 
-        if (results.length === 0) {
+
+    // Make section always visable
+        resultsSection.style.display = 'block';
+        if (headerEl) headerEl.textContent = showAll || !term ? 'Available Products' : 'Search Results';
+
+
+        if (!results || results.length === 0) {
             resultsEl.innerHTML = '<p>No products found matching your search.</p>';
-            resultsSection.style.display = 'block';
             return;
         }
+
 
         let resultsHTML = '<div class="row">';
         results.forEach(product => {
             resultsHTML += `
-                <div class="col-md-6 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">${product.productDescription}</h5>
-                            <p class="card-text">
-                                <strong>ID:</strong> ${product.productId}<br>
-                                <strong>Category:</strong> ${product.productCategory}<br>
-                                <strong>Price:</strong> $${parseFloat(product.productPrice).toFixed(2)}<br>
-                                <strong>Weight:</strong> ${product.productWeight} lb
-                            </p>
-                            <button class="btn btn-primary add-to-cart" 
-                                    data-product-id="${product.productId}">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
+<div class="col-md-6 mb-3">
+<div class="card">
+<div class="card-body">
+<h5 class="card-title">${product.productDescription}</h5>
+<p class="card-text">
+<strong>ID:</strong> ${product.productId}<br>
+<strong>Category:</strong> ${product.productCategory}<br>
+<strong>Price:</strong> $${parseFloat(product.productPrice).toFixed(2)}<br>
+<strong>Weight:</strong> ${product.productWeight} lb
+</p>
+<button class="btn btn-primary add-to-cart" data-product-id="${product.productId}">
+Add to Cart
+</button>
+</div>
+</div>
+</div>`;
         });
         resultsHTML += '</div>';
 
-        resultsEl.innerHTML = resultsHTML;
-        resultsSection.style.display = 'block';
 
-        // Add event listeners to add-to-cart buttons
+        resultsEl.innerHTML = resultsHTML;
+
+
+// Add event listeners to add-to-cart buttons
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function() {
                 const productId = this.getAttribute('data-product-id');
                 const products = readProducts();
                 const product = products.find(p => p.productId === productId);
-                if (product) {
-                    addToCart(product, 1);
-                }
+                if (product) addToCart(product, 1);
             });
         });
     }
@@ -355,6 +375,8 @@
     $(document).ready(function () {
         // Initial render
         renderCart();
+        //show all items on load
+        renderAllProducts();
 
         // Search button click
         $('#searchButton').on('click', searchProducts);
@@ -381,9 +403,9 @@
         // Clear cart button
         $('#clearCartButton').on('click', clearCart);
 
-        // Clear search when input changes
-        $('#productSearch').on('input', function() {
-            document.getElementById('searchResultsSection').style.display = 'none';
+        // Live search filter
+        $('#productSearch').on('input', function () {
+            searchProducts();
         });
     });
 })();
