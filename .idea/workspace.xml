@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shopping cart html, js">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.html" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="header comments for group tasks">
+      <change beforePath="$PROJECT_DIR$/shoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,7 @@
       <workItem from="1756584976438" duration="26397000" />
       <workItem from="1759889137681" duration="4535000" />
       <workItem from="1761154455250" duration="630000" />
-      <workItem from="1761603061497" duration="4696000" />
+      <workItem from="1761603061497" duration="4999000" />
     </task>
     <task id="LOCAL-00001" summary="ShopperManagement HTML, CSS, Bootstrap">
       <option name="closed" value="true" />
@@ -168,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761670680718</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="header comments for group tasks">
+      <option name="closed" value="true" />
+      <created>1761670907686</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1761670907686</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +202,7 @@
     <MESSAGE value="fixed search sticky text" />
     <MESSAGE value="add edit button for the search products and validate the duplicate product id" />
     <MESSAGE value="shopping cart html, js" />
-    <option name="LAST_COMMIT_MESSAGE" value="shopping cart html, js" />
+    <MESSAGE value="header comments for group tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="header comments for group tasks" />
   </component>
 </project>

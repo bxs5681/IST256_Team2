@@ -81,20 +81,20 @@
     // Calculate cart totals
     function calculateCartTotals() {
         const cart = readCart();
+        let itemCount = 0;
         let totalPrice = 0;
         let totalWeight = 0;
-        let itemCount = 0;
 
         cart.forEach(item => {
+            itemCount += item.quantity;
             totalPrice += item.productPrice * item.quantity;
             totalWeight += item.productWeight * item.quantity;
-            itemCount += item.quantity;
         });
 
         return {
+            itemCount: itemCount,
             totalPrice: totalPrice.toFixed(2),
-            totalWeight: totalWeight.toFixed(2),
-            itemCount: itemCount
+            totalWeight: totalWeight.toFixed(2)
         };
     }
 
@@ -306,19 +306,16 @@
     // AJAX - Send cart to REST API
     function sendCartToApi(cartDocument) {
         // Simulate sending to REST API
-        // In a real application, you would send this to your backend service
         $.ajax({
-            url: 'https://jsonplaceholder.typicode.com/posts', // Demo API
+            url: '',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(cartDocument),
             success: function(response) {
                 console.log('Cart data sent to API successfully:', response);
-                // You could show a success message here if needed
             },
             error: function(xhr, status, error) {
                 console.error('Error sending cart data to API:', error);
-                // You could show an error message here if needed
             }
         });
     }
