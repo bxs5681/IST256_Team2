@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="add edit button for the search products and validate the duplicate product id">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_19_2025_8_33_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_19_2025_8_33_PM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shopping cart html, js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/productManagement.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopperManagement.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shoppingCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +94,7 @@
       <workItem from="1756584976438" duration="26397000" />
       <workItem from="1759889137681" duration="4535000" />
       <workItem from="1761154455250" duration="630000" />
-      <workItem from="1761603061497" duration="4390000" />
+      <workItem from="1761603061497" duration="4696000" />
     </task>
     <task id="LOCAL-00001" summary="ShopperManagement HTML, CSS, Bootstrap">
       <option name="closed" value="true" />
@@ -166,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761084524555</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="shopping cart html, js">
+      <option name="closed" value="true" />
+      <created>1761670680718</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1761670680718</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +194,7 @@
     <MESSAGE value="product Management page redesigned - Add products on the aside" />
     <MESSAGE value="fixed search sticky text" />
     <MESSAGE value="add edit button for the search products and validate the duplicate product id" />
-    <option name="LAST_COMMIT_MESSAGE" value="add edit button for the search products and validate the duplicate product id" />
+    <MESSAGE value="shopping cart html, js" />
+    <option name="LAST_COMMIT_MESSAGE" value="shopping cart html, js" />
   </component>
 </project>
