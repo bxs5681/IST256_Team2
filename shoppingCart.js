@@ -197,7 +197,6 @@
         const term = document.getElementById('productSearch').value.trim().toLowerCase();
         $('#productSearchError').text('');
 
-
         // No ID will show everything
         if (!term) {
             renderAllProducts();
@@ -205,26 +204,23 @@
             return;
         }
 
-
         const products = readProducts();
         const isNumeric = /^[0-9]+$/.test(term);
 
-
         let results = [];
         if (isNumeric) {
-        // Numeric will match productId that *includes* the digits (e.g., "1" finds "10", "21")
+            // Numeric will match productId that *includes* the digits (e.g., "1" finds "10", "21")
             results = products.filter(p =>
                 p.productId && p.productId.toString().trim().toLowerCase().includes(term)
             );
         } else {
-        // Text will match description (contains) OR exact/partial id string
+            // Text will match description (contains) OR exact/partial id string
             results = products.filter(p => {
                 const idStr = (p.productId || '').toString().trim().toLowerCase();
                 const desc = (p.productDescription || '').toLowerCase();
                 return desc.includes(term) || idStr.includes(term);
             });
         }
-
 
         displaySearchResults(results, { term });
         currentSearchTerm = term;
@@ -247,17 +243,14 @@
         const resultsEl = document.getElementById('searchResults');
         if (!resultsEl) return;
 
-
-    // Make section always visable
+        // Make section always visable
         resultsSection.style.display = 'block';
         if (headerEl) headerEl.textContent = showAll || !term ? 'Available Products' : 'Search Results';
-
 
         if (!results || results.length === 0) {
             resultsEl.innerHTML = '<p>No products found matching your search.</p>';
             return;
         }
-
 
         let resultsHTML = '<div class="row">';
         results.forEach(product => {
@@ -281,9 +274,7 @@ Add to Cart
         });
         resultsHTML += '</div>';
 
-
         resultsEl.innerHTML = resultsHTML;
-
 
 // Add event listeners to add-to-cart buttons
         document.querySelectorAll('.add-to-cart').forEach(button => {
@@ -393,15 +384,25 @@ Add to Cart
             }
         });
 
-        // Checkout button
+        // Checkout button - REDIRECT TO SHIPPING PAGE
         $('#checkoutButton').on('click', function() {
             const cart = readCart();
             if (cart.length === 0) {
                 alert('Your cart is empty!');
                 return;
             }
-            alert('Checkout functionality would be implemented here!');
-            // In a real application, this would redirect to checkout page
+
+            // Save current cart to localStorage for shipping page to access
+            const cartDocument = {
+                cartId: generateCartId(),
+                items: cart,
+                totals: calculateCartTotals(),
+                lastUpdated: new Date().toISOString()
+            };
+            localStorage.setItem('checkoutCart', JSON.stringify(cartDocument));
+
+            // Redirect to shipping page
+            window.location.href = 'shipping.html';
         });
 
         // Clear cart button
