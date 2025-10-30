@@ -1,4 +1,4 @@
-// shippingValidation.js - Complete validation implementation
+// shippingValidation.js
 const ShippingValidator = {
     validateAddress: function(address) {
         if (!address || address.trim().length === 0) return 'Street address is required';

@@ -45,6 +45,23 @@ angular.module('shippingApp', [])
             }
         }
 
+        // FUNCTION: Clear the shopping cart from localStorage
+        function clearShoppingCart() {
+            try {
+                // Clear the main shopping cart
+                localStorage.removeItem('shoppingCart');
+
+                // Also clear the checkout cart to be thorough
+                localStorage.removeItem('checkoutCart');
+
+                console.log('Shopping cart cleared successfully');
+                return true;
+            } catch (e) {
+                console.error('Error clearing shopping cart:', e);
+                return false;
+            }
+        }
+
         $scope.validateField = function(fieldName, value) {
             let error = '';
             switch(fieldName) {
@@ -228,14 +245,15 @@ angular.module('shippingApp', [])
             // Save order to localStorage
             localStorage.setItem('currentOrder', $scope.finalOrderJson);
 
-            // Clear the checkout cart since order is complete
-            localStorage.removeItem('checkoutCart');
+            // CLEAR THE SHOPPING CART
+            clearShoppingCart();
 
             const orderData = JSON.parse($scope.finalOrderJson);
             alert('🎉 ORDER SUCCESSFULLY COMPLETED!\n\n' +
                 `Order ID: ${orderData.orderId}\n` +
                 `Total: $${$scope.calculateTotal()}\n` +
                 `Delivery: ${$scope.estimatedDelivery}\n\n` +
+                `Your shopping cart has been cleared.\n` +
                 `Thank you for your order!`);
 
             // Auto-hide success banner after 10 seconds
@@ -272,8 +290,10 @@ angular.module('shippingApp', [])
             $scope.shippingCost = '0.00';
             $scope.estimatedDelivery = '';
 
-            // Reload cart data if available
-            loadCartData();
+            // Note: We don't reload cart data here because cart was cleared
+            // Redirect user back to shopping cart if they want to add more items
+            $scope.cartSummary = null;
+            $scope.cartItems = [];
         };
 
         // Initialize when controller loads

@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shoppingCart.json">
-      <change afterPath="$PROJECT_DIR$/shippingAngular.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shippingValidation.js" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shipping">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shipping.html" beforeDir="false" afterPath="$PROJECT_DIR$/shipping.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shippingAngular.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAngular.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shippingValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingValidation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761788921195</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="shipping">
+      <option name="closed" value="true" />
+      <created>1761833523618</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1761833523618</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +232,7 @@
     <MESSAGE value="header comments for group tasks" />
     <MESSAGE value="cart summary fix" />
     <MESSAGE value="shoppingCart.json" />
-    <option name="LAST_COMMIT_MESSAGE" value="shoppingCart.json" />
+    <MESSAGE value="shipping" />
+    <option name="LAST_COMMIT_MESSAGE" value="shipping" />
   </component>
 </project>
