@@ -347,6 +347,10 @@ Add to Cart
             renderCart();
             document.getElementById('cartJsonSection').style.display = 'none';
             showSuccessMessage('Cart cleared successfully!');
+
+            document.getElementById('itemCount').textContent = '0';
+            document.getElementById('totalPrice').textContent = '0.00';
+            document.getElementById('totalWeight').textContent = '0.00';
         }
     }
 
