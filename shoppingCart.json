@@ -1,0 +1,21 @@
+
+{
+  "cartId": "",
+  "items": [
+    {
+      "productId": "",
+      "productDescription": "",
+      "productCategory": "",
+      "productPrice": 0,
+      "productWeight": 0,
+      "quantity": 0,
+      "addedAt": ""
+    }
+  ],
+  "totals": {
+    "itemCount": 0,
+    "totalPrice": "",
+    "totalWeight": ""
+  },
+  "lastUpdated": ""
+}
