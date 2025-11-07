@@ -264,7 +264,7 @@ angular.module('shippingApp', [])
 
             // Send to API (simulated)
             $.ajax({
-                url: 'http://ist256.up.ist.psu.edu:3002', // Test API
+                url: 'http://ist256.up.ist.psu.edu:3002/ordered', // Test API
                 type: 'POST',
                 contentType: 'application/json',
                 data: $scope.finalOrderJson,
