@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shipping">
+      <change beforePath="$PROJECT_DIR$/.idea/Storefront Home Page.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Storefront Home Page.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping.html" beforeDir="false" afterPath="$PROJECT_DIR$/shipping.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shippingAngular.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAngular.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shippingValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/products.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productManagementValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/productValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shipping.html" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBilling.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shippingAngular.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBillingAngular.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopperJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/shopperJSON.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopperManagementValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/shopperValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,31 +62,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.shopperManagement.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.productJSON.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.shopperManagement.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.productJSON.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "C:/Users/bines/AppData/Roaming/JetBrains/WebStorm2025.2/node/versions/22.19.0/node",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

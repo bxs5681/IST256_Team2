@@ -402,7 +402,7 @@ Add to Cart
             localStorage.setItem('checkoutCart', JSON.stringify(cartDocument));
 
             // Redirect to shipping page
-            window.location.href = 'shipping.html';
+            window.location.href = 'shippingAndBilling.html';
         });
 
         // Clear cart button

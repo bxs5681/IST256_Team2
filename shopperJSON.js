@@ -6,7 +6,7 @@
 function handleShopperSubmit(event) {
     event.preventDefault(); // prevent page reload
 
-    // Reuse your existing validation (kept exactly as-is in shopperManagementValidation.js)
+    // Reuse your existing validation (kept exactly as-is in shopperValidation.js)
     // That function already: clears errors, validates, builds shopperDoc, stores to localStorage('shoppers')
     const ok = validateShopperManagementForm();
     if (!ok) return false;

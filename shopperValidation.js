@@ -1,4 +1,4 @@
-// shopperManagementValidation.js
+// shopperValidation.js
 
 // Validation rules
 const smRules = {

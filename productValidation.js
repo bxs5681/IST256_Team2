@@ -1,4 +1,4 @@
-// productManagementValidation.js
+// productValidation.js
 
 // Validation rules
 const pmRules = {
