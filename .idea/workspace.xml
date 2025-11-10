@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="shipping">
-      <change beforePath="$PROJECT_DIR$/.idea/Storefront Home Page.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Storefront Home Page.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/products.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productManagementValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/productValidation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shipping.html" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBilling.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shippingAngular.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBillingAngular.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopperJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/shopperJSON.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopperManagement.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopper.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopperManagementValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/shopperValidation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shoppingCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/shoppingCart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
+    <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="Added billing with shipping for order processing">
+      <change beforePath="$PROJECT_DIR$/shippingAngular.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761833523618</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added billing with shipping for order processing">
+      <option name="closed" value="true" />
+      <created>1762790875518</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1762790875518</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +237,7 @@
     <MESSAGE value="cart summary fix" />
     <MESSAGE value="shoppingCart.json" />
     <MESSAGE value="shipping" />
-    <option name="LAST_COMMIT_MESSAGE" value="shipping" />
+    <MESSAGE value="Added billing with shipping for order processing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added billing with shipping for order processing" />
   </component>
 </project>
