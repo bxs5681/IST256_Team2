@@ -127,7 +127,7 @@ $(function () {
         const payload = buildReturnDocument();
 
         $.ajax({
-            url: 'https://jsonplaceholder.typicode.com/posts', // demo API
+            url: 'https://ist256.up.ist.psu.edu:3002/products', // demo API
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(payload),
