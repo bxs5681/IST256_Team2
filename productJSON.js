@@ -12,6 +12,26 @@
 
     function writeProducts(list) {
         localStorage.setItem(LS_KEY, JSON.stringify(list));
+
+        const payload = {
+            products: list,
+            timestamp: new Date().toISOString(),
+            totalProducts: list.length
+        };
+
+        // Send to API (simulated)
+        $.ajax({
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(payload),
+            success: function(response) {
+                console.log('Products synced to API:', response);
+            },
+            error: function(error) {
+                console.error('API error:', error);
+            }
+        });
     }
 
     // Seed from productData.json
