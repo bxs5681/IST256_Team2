@@ -1,4 +1,5 @@
 $(function () {
+    const API_BASE = "https://130.203.136.203:3002/api";
     const LS_PRODUCTS = 'products';
     const LS_RETURNS = 'returnsDraft';
     let productCache = [];
@@ -6,14 +7,16 @@ $(function () {
 
     // Load available products (used for description lookup by productId)
     function loadProducts() {
-        // try localStorage first
         const fromLS = localStorage.getItem(LS_PRODUCTS);
         if (fromLS) {
-            productCache = JSON.parse(fromLS);
-            return;
+            try {
+                productCache = JSON.parse(fromLS);
+                return;
+            } catch (e) {
+                productCache = [];
+            }
         }
 
-        // fallback to productData.json
         $.getJSON('productData.json')
             .done(function (data) {
                 if (Array.isArray(data)) {
@@ -21,57 +24,59 @@ $(function () {
                 }
             })
             .fail(function () {
-                console.log('Could not load productData.json, using empty list.');
+                console.warn('Unable to load product data for returns page.');
             });
     }
-    loadProducts();
 
     function findProductById(id) {
         if (!id) return null;
-        return productCache.find(p => String(p.productId) === String(id)) || null;
+        const pid = String(id).trim().toLowerCase();
+
+        const match = productCache.find(function (p) {
+            return p && p.productId &&
+                String(p.productId).trim().toLowerCase() === pid;
+        });
+        return match || null;
     }
 
-    // Render the returnItems table and JSON preview
     function renderReturns() {
-        const $tbody = $('#returnsTableBody');
-        $tbody.empty();
+        const $tableBody = $('#returnsTable tbody');
+        const $jsonOut = $('#returnJsonOutput');
+
+        $tableBody.empty();
 
         if (!returnItems.length) {
-            $('#noReturnsMsg').show();
+            $tableBody.append(
+                '<tr><td colspan="5" class="text-center text-muted">No items added to return yet.</td></tr>'
+            );
         } else {
-            $('#noReturnsMsg').hide();
+            returnItems.forEach(function (item, idx) {
+                const row = `
+                    <tr data-index="${idx}">
+                        <td>${item.productId}</td>
+                        <td>${item.productDesc}</td>
+                        <td>${item.reason}</td>
+                        <td>${item.qty}</td>
+                        <td>
+                            <button class="btn btn-sm btn-danger btn-remove-item">Remove</button>
+                        </td>
+                    </tr>`;
+                $tableBody.append(row);
+            });
         }
 
-        returnItems.forEach(function (item, index) {
-            const tr = $('<tr>');
-            tr.append($('<td>').text(item.productId));
-            tr.append($('<td>').text(item.productDesc));
-            tr.append($('<td>').text(item.reason));
-            tr.append($('<td>').text(item.qty));
-
-            const delBtn = $('<button>')
-                .addClass('btn btn-danger btn-sm')
-                .text('Remove')
-                .on('click', function () {
-                    returnItems.splice(index, 1);
-                    saveReturns();
-                    renderReturns();
-                });
-
-            tr.append($('<td>').append(delBtn));
-            $tbody.append(tr);
-        });
-
-        // Update JSON preview
-        const jsonDoc = buildReturnDocument();
-        $('#returnsJson').text(JSON.stringify(jsonDoc, null, 2));
+        const payload = buildReturnDocument();
+        $jsonOut.text(JSON.stringify(payload, null, 2));
     }
 
     function saveReturns() {
-        localStorage.setItem(LS_RETURNS, JSON.stringify(returnItems));
+        try {
+            localStorage.setItem(LS_RETURNS, JSON.stringify(returnItems));
+        } catch (e) {
+            console.warn('Unable to persist returns draft:', e);
+        }
     }
 
-    // Build the payload document
     function buildReturnDocument() {
         return {
             shopperEmail: $('#returnEmail').val().trim(),
@@ -81,10 +86,9 @@ $(function () {
         };
     }
 
-    // Add item to return
     $('#addReturnItemBtn').on('click', function () {
-        if (!validateReturnsFormPart()) return;   // shopper + order basic validation
-        if (!validateReturnItem()) return;        // item section validation
+        if (!validateReturnsFormPart()) return;
+        if (!validateReturnItem()) return;
 
         const id = $('#returnProductSearch').val().trim();
         const prod = findProductById(id);
@@ -94,15 +98,11 @@ $(function () {
         let desc = '';
         if (prod) {
             desc = prod.productDescription || prod.productDesc || '';
-            $('#productLookupMsg').text('Product found: ' + desc).css('color', 'green');
-        } else {
-            desc = '(Unknown / not in current product list)';
-            $('#productLookupMsg').text('Product not found in current product list, adding with generic description.').css('color', 'orange');
         }
 
         returnItems.push({
             productId: id,
-            productDesc: desc,
+            productDesc: desc || '(description not found in product list)',
             reason: reason,
             qty: qty
         });
@@ -110,13 +110,20 @@ $(function () {
         saveReturns();
         renderReturns();
 
-        // clear item fields
         $('#returnProductSearch').val('');
         $('#returnReason').val('');
         $('#returnQty').val('1');
     });
 
-    // Submit the return document (demo)
+    $('#returnsTable').on('click', '.btn-remove-item', function () {
+        const index = $(this).closest('tr').data('index');
+        if (index >= 0) {
+            returnItems.splice(index, 1);
+            saveReturns();
+            renderReturns();
+        }
+    });
+
     $('#submitReturnsBtn').on('click', function () {
         if (!validateReturnsFormPart()) return;
         if (!returnItems.length) {
@@ -127,16 +134,17 @@ $(function () {
         const payload = buildReturnDocument();
 
         $.ajax({
-            url: 'https://ist256.up.ist.psu.edu:3002/products', // demo API
+            url: API_BASE + '/returns',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify(payload),
             success: function (resp) {
-                $('#ajaxMsg').text('Return submitted (demo). See console for response.').css('color', 'green');
+                $('#ajaxMsg').text('Return submitted to API successfully.').css('color', 'green');
                 console.log('Return response:', resp);
             },
-            error: function () {
-                $('#ajaxMsg').text('Error sending return document.').css('color', 'red');
+            error: function (xhr) {
+                console.error('Return API error:', xhr);
+                $('#ajaxMsg').text('There was a problem submitting your return.').css('color', 'red');
             }
         });
     });
@@ -159,19 +167,18 @@ $(function () {
             try {
                 const hist = JSON.parse(localStorage.getItem('orderHistory') || '[]');
                 if (Array.isArray(hist)) hist.forEach(o => o && o.orderId && list.push(o));
-            } catch(e){}
+            } catch (e) { }
             try {
                 const cur = JSON.parse(localStorage.getItem('currentOrder') || 'null');
                 if (cur && cur.orderId && !list.some(o => o.orderId === cur.orderId)) list.push(cur);
-            } catch(e){}
-            list.sort((a,b) => Date.parse(b.submittedAt||0) - Date.parse(a.submittedAt||0));
+            } catch (e) { }
+            list.sort((a, b) => Date.parse(b.submittedAt || 0) - Date.parse(a.submittedAt || 0));
             return list;
         }
 
         const orders = readOrders();
         const hasAnyOrder = orders.length > 0;
 
-        // Hard-gate: user must have placed an order
         if (!hasAnyOrder) {
             if (hint) hint.textContent = 'No prior orders found. You must place an order before starting a return.';
             if (addBtn) addBtn.disabled = true;
@@ -185,64 +192,63 @@ $(function () {
                 noMsg.classList.remove('text-muted');
                 noMsg.style.display = 'block';
             }
-            return; // nothing else to do
+            return;
         }
 
-        // Populate dropdown
-        if (selectEl) {
-            orders.forEach(o => {
-                const when = o.submittedAt ? new Date(o.submittedAt).toLocaleString() : 'Unknown time';
-                const opt = document.createElement('option');
-                opt.value = o.orderId;
-                opt.textContent = `${o.orderId} — ${when}`;
-                selectEl.appendChild(opt);
-            });
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '-- Select an order found on this device --';
+        selectEl.appendChild(defaultOption);
 
-            // Auto-populate when an order is chosen
-            selectEl.addEventListener('change', function() {
-                const chosenId = this.value;
-                const chosen = orders.find(o => o.orderId === chosenId);
+        orders.forEach(o => {
+            if (!o || !o.orderId) return;
+            const when = o.submittedAt ? new Date(o.submittedAt).toLocaleString() : 'Unknown date';
+            const opt = document.createElement('option');
+            opt.value = o.orderId;
+            opt.textContent = `${o.orderId} — ${when}`;
+            selectEl.appendChild(opt);
+        });
 
-                // reset preview box
-                if (itemsWrap) itemsWrap.classList.add('d-none');
-                if (itemsEl) itemsEl.innerHTML = '';
+        selectEl.addEventListener('change', function () {
+            const chosenId = this.value;
+            const chosen = orders.find(o => o.orderId === chosenId);
 
-                if (chosenId && chosen) {
-                    if (orderNoEl) orderNoEl.value = chosenId;
+            if (itemsWrap) itemsWrap.classList.add('d-none');
+            if (itemsEl) itemsEl.innerHTML = '';
 
-                    try {
-                        const cartItems = (chosen.cart && chosen.cart.items) ? chosen.cart.items : [];
-                        // rebuild in-memory returnItems to match previous order
-                        returnItems = (Array.isArray(cartItems) ? cartItems : []).map(function(it){
-                            return {
-                                productId: it.productId,
-                                productDesc: it.productDescription || it.productDesc || '',
-                                reason: 'Selected from previous order',
-                                qty: (typeof it.quantity === 'number' && it.quantity > 0) ? it.quantity : 1
-                            };
-                        });
+            if (chosenId && chosen) {
+                if (orderNoEl) orderNoEl.value = chosenId;
 
-                        // persist + re-render (updates JSON preview)
-                        saveReturns();
-                        renderReturns();
+                try {
+                    const cartItems = (chosen.cart && chosen.cart.items) ? chosen.cart.items : [];
+                    returnItems = (Array.isArray(cartItems) ? cartItems : []).map(function (it) {
+                        return {
+                            productId: it.productId,
+                            productDesc: it.productDescription || it.productDesc || '',
+                            reason: 'Selected from previous order',
+                            qty: (typeof it.quantity === 'number' && it.quantity > 0) ? it.quantity : 1
+                        };
+                    });
 
-                        // show items preview
-                        if (itemsEl) {
-                            const rows = returnItems.map(function(it){
-                                return `<li><strong>${it.productId}</strong> — ${it.productDesc} (qty: ${it.qty})</li>`;
-                            }).join('');
-                            itemsEl.innerHTML = `<ul class="mb-0">${rows}</ul>`;
-                        }
-                        if (itemsWrap) itemsWrap.classList.remove('d-none');
-                    } catch (e) {
-                        console.warn('Failed to auto-populate return items from order:', e);
+                    saveReturns();
+                    renderReturns();
+
+                    if (itemsEl) {
+                        const rows = returnItems.map(function (it) {
+                            return `<li><strong>${it.productId}</strong> — ${it.productDesc} (qty: ${it.qty})</li>`;
+                        }).join('');
+                        itemsEl.innerHTML = `<ul class="mb-0">${rows}</ul>`;
                     }
+                    if (itemsWrap) itemsWrap.classList.remove('d-none');
+                } catch (e) {
+                    console.warn('Failed to auto-populate return items from order:', e);
                 }
-            });
-        }
+            }
+        });
     })();
 
-    // Restore any draft return items from localStorage
+    loadProducts();
+
     const draft = localStorage.getItem(LS_RETURNS);
     if (draft) {
         try {
@@ -252,6 +258,5 @@ $(function () {
         }
     }
 
-    // Initial render
     renderReturns();
 });

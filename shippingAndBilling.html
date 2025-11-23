@@ -1,32 +1,32 @@
 <!-- Group Member Tasks:
-    Binesh - HTML (Page Structure), CSS (Page Style and Cosmetics), Bootstrap (Professional look), JavaScript (page behaviors and field integrity checks), Angular
-    Kyle - JSON Shopper Document collection (containing the details from the new/update shopper details form)
+    Binesh - HTML/CSS/Bootstrap/AngularJS
+    Kyle   - JSON Shopper Document collection
     Vedang - jQuery (Search and update the JSON product document)
-    -->
+-->
 
 <!DOCTYPE html>
 <html lang="en" ng-app="shippingApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiTech Store - Shipping Selection</title>
+    <title>HiTech Store - Shipping & Billing</title>
 
-    <!-- Cloud Libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Shared layout + page styles -->
+    <link rel="stylesheet" href="Storefront_Page_Layout.css">
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+
+    <!-- Libraries -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-    <!-- Shared CSS -->
-    <link rel="stylesheet" href="Storefront_Page_Layout.css">
-
-    <!-- External JS -->
+    <!-- Page JS (your existing files) -->
     <script src="shippingValidation.js"></script>
     <script src="billingValidation.js"></script>
     <script src="shippingAndBillingAngular.js"></script>
 
     <style>
         .form-section {
-            background: white;
+            background: #ffffff;
             padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
@@ -35,95 +35,66 @@
 
         #jsonOutput {
             background: #f8f9fa;
+            border-radius: 8px;
             padding: 15px;
-            border-radius: 5px;
-            font-family: monospace;
+            max-height: 350px;
+            overflow-y: auto;
+            font-family: "Courier New", monospace;
+            font-size: 0.9rem;
             white-space: pre-wrap;
         }
 
         .field-error {
-            border-color: #FF0000 !important;
-            background-color: #f8d7da; }
-
-        .validation-success {
-            color: #198754;
-            font-weight: bold; }
+            border-color: #dc3545 !important;
+        }
 
         .success-banner {
             background: linear-gradient(135deg, #28a745, #20c997);
             color: white;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px; }
-
-        /* Nav */
-        nav {
-            flex: 1 1 15%;
-        }
-
-        /* Main */
-        main {
-            flex: 1 1 50%;
-        }
-
-        /* Main headers*/
-        main h2 {
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-            font-size: 1.8rem;
         }
 
-        /* Aside */
-        aside {
-            flex: 1 1 30%;
-            min-width: 300px;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .validation-success {
+            color: #28a745;
+            font-weight: bold;
         }
 
-        /* Ensure form elements are visible and clickable */
-        .form-control:focus {
-            border-color: #3498db;
-            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-        }
-
-        /* Make sure buttons are enabled and visible */
-        .btn-primary {
-            background-color: #3498db;
-            border-color: #3498db;
-            padding: 10px 20px;
-            font-size: 1.1em;
-        }
-
-        .btn-primary:hover {
-            background-color: #2980b9;
-            border-color: #2980b9;
-        }
-
-        /* Ensure error messages are visible */
         .error-message {
             color: #dc3545;
             font-size: 0.875em;
             margin-top: 5px;
         }
 
+        /* Main header styling inside <main> */
+        main h2 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8rem;
+        }
     </style>
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
 </head>
 <body>
 
+<!-- Header (same as index.html) -->
 <header>
-    <a href="index.html"><img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo" style="height:150px; width: 150px; filter:hue-rotate(60deg)"></a>
+    <a href="index.html">
+        <img src="Images/HiTech Logo Transparent.png"
+             alt="HiTech Store Logo"
+             style="height:150px; width:150px; filter:hue-rotate(60deg)">
+    </a>
     <div>
         <h1>HiTech Store</h1>
         <p><em>Your one-stop shop for all tech gadgets</em></p>
     </div>
 </header>
 
+<!-- Main Layout: nav on the left, main in the center, aside on the right -->
 <div class="container" ng-controller="ShippingController">
+
+    <!-- Navigation (same structure as other pages) -->
     <nav>
         <ul style="padding-left: 10px;">
             <li><a href="index.html">Home</a></li>
@@ -135,36 +106,40 @@
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
-
     </nav>
 
+    <!-- Main Section: Shipping, Billing, JSON -->
     <main>
-        <h2>Shipping & Billing</h2>
+        <h2>Shipping &amp; Billing</h2>
 
-        <!-- Success Banner - Only shows after order submission -->
+        <!-- Success Banner - only after successful submission -->
         <div class="success-banner" ng-if="showSuccess">
             <h4>🎉 Order Submitted Successfully!</h4>
             <p>Your order has been processed. Below you can see the complete order JSON document.</p>
             <button class="btn btn-light btn-sm" ng-click="resetForm()">Place Another Order</button>
         </div>
 
+        <!-- If there is no cartSummary (no items in cart) -->
         <div class="form-section" ng-if="!cartSummary">
-            <div class="alert alert-warning">
+            <div class="alert alert-warning mb-0">
                 <h4>Your cart is empty</h4>
                 <p>Please add items to your cart before proceeding with shipping.</p>
                 <a href="shoppingCart.html" class="btn btn-primary">Return to Shopping Cart</a>
             </div>
         </div>
 
-        <!-- Shipping Form - Hidden after order submission -->
+        <!-- Shipping Information section (only if cart has items and order not submitted) -->
         <div class="form-section" ng-if="cartSummary && !orderSubmitted">
             <h3>Shipping Information</h3>
 
-            <form name="shippingForm" novalidate ng-submit="submitOrder()">
+            <form name="shippingForm" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label"><strong>Address *</strong></label>
-                        <input type="text" class="form-control" name="address"
+                        <input type="text"
+                               class="form-control"
+                               id="address"
+                               name="address"
                                ng-model="shippingData.address"
                                ng-blur="validateField('address', shippingData.address)"
                                ng-class="{'field-error': hasError('address')}"
@@ -173,9 +148,13 @@
                             {{validationErrors.address}}
                         </div>
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label"><strong>City *</strong></label>
-                        <input type="text" class="form-control" name="city"
+                        <input type="text"
+                               class="form-control"
+                               id="city"
+                               name="city"
                                ng-model="shippingData.city"
                                ng-blur="validateField('city', shippingData.city)"
                                ng-class="{'field-error': hasError('city')}"
@@ -189,183 +168,232 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label"><strong>State *</strong></label>
-                        <input type="text" class="form-control" name="state"
+                        <input type="text"
+                               class="form-control"
+                               id="state"
+                               name="state"
+                               maxlength="2"
                                ng-model="shippingData.state"
                                ng-blur="validateField('state', shippingData.state)"
                                ng-class="{'field-error': hasError('state')}"
-                               maxlength="2" required>
+                               required>
                         <div class="error-message" ng-if="hasError('state')">
                             {{validationErrors.state}}
                         </div>
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label"><strong>ZIP Code *</strong></label>
-                        <input type="text" class="form-control" name="zipCode"
+                        <input type="text"
+                               class="form-control"
+                               id="zipCode"
+                               name="zipCode"
+                               maxlength="5"
                                ng-model="shippingData.zipCode"
                                ng-blur="validateField('zipCode', shippingData.zipCode)"
                                ng-class="{'field-error': hasError('zipCode')}"
-                               maxlength="5" required>
+                               required>
                         <div class="error-message" ng-if="hasError('zipCode')">
                             {{validationErrors.zipCode}}
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label"><strong>Shipping Carrier *</strong></label>
-                    <select class="form-select" name="shippingCarrier"
-                            ng-model="shippingData.shippingCarrier"
-                            ng-change="validateField('shippingCarrier', shippingData.shippingCarrier)"
-                            ng-class="{'field-error': hasError('shippingCarrier')}"
-                            required>
-                        <option value="">Select carrier</option>
-                        <option value="FedEx">FedEx</option>
-                        <option value="UPS">UPS</option>
-                        <option value="DHL">DHL</option>
-                    </select>
-                    <div class="error-message" ng-if="hasError('shippingCarrier')">
-                        {{validationErrors.shippingCarrier}}
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label"><strong>Shipping Carrier *</strong></label>
+                        <select class="form-select"
+                                id="shippingCarrier"
+                                name="shippingCarrier"
+                                ng-model="shippingData.shippingCarrier"
+                                ng-change="calculateShipping(); updateOrderJson()"
+                                ng-blur="validateField('shippingCarrier', shippingData.shippingCarrier)"
+                                ng-class="{'field-error': hasError('shippingCarrier')}"
+                                required>
+                            <option value="">-- Select Carrier --</option>
+                            <option value="UPS">UPS</option>
+                            <option value="FedEx">FedEx</option>
+                            <option value="USPS">USPS</option>
+                        </select>
+                        <div class="error-message" ng-if="hasError('shippingCarrier')">
+                            {{validationErrors.shippingCarrier}}
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label class="form-label"><strong>Shipping Method *</strong></label>
-                    <select class="form-select" name="shippingMethod"
-                            ng-model="shippingData.shippingMethod"
-                            ng-change="validateField('shippingMethod', shippingData.shippingMethod)"
-                            ng-class="{'field-error': hasError('shippingMethod')}"
-                            required>
-                        <option value="">Select method</option>
-                        <option value="Overnight">Overnight</option>
-                        <option value="2nd Day">2nd Day</option>
-                        <option value="Ground">Ground</option>
-                    </select>
-                    <div class="error-message" ng-if="hasError('shippingMethod')">
-                        {{validationErrors.shippingMethod}}
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label"><strong>Shipping Method *</strong></label>
+                        <select class="form-select"
+                                id="shippingMethod"
+                                name="shippingMethod"
+                                ng-model="shippingData.shippingMethod"
+                                ng-change="calculateShipping(); updateOrderJson()"
+                                ng-blur="validateField('shippingMethod', shippingData.shippingMethod)"
+                                ng-class="{'field-error': hasError('shippingMethod')}"
+                                required>
+                            <option value="">-- Select Method --</option>
+                            <option value="Standard">Standard</option>
+                            <option value="Express">Express</option>
+                            <option value="Overnight">Overnight</option>
+                        </select>
+                        <div class="error-message" ng-if="hasError('shippingMethod')">
+                            {{validationErrors.shippingMethod}}
+                        </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label"><strong>Special Instructions</strong></label>
-                    <textarea class="form-control" ng-model="shippingData.specialInstructions" rows="3"></textarea>
+                    <textarea class="form-control"
+                              id="specialInstructions"
+                              rows="3"
+                              ng-model="shippingData.specialInstructions"
+                              ng-change="updateOrderJson()"></textarea>
                 </div>
             </form>
         </div>
 
-        <!-- Billing Information Section -->
+        <!-- Billing Information section -->
         <div class="form-section" ng-if="cartSummary && !orderSubmitted">
             <h3>Billing Information</h3>
 
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="sameAsShipping"
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="sameAsShipping"
                        ng-model="billingData.sameAsShipping"
-                       ng-change="copyShippingToBilling()">
+                       ng-change="copyShippingToBilling(); updateOrderJson()">
                 <label class="form-check-label" for="sameAsShipping">
                     Billing address same as shipping address
                 </label>
             </div>
 
-            <!-- Test Credit Card Dropdown -->
-            <div class="mb-4 p-3 border rounded bg-light">
-                <label class="form-label"><strong>💳 Quick Fill Test Cards</strong></label>
-                <select class="form-select" id="testCardDropdown" ng-model="selectedTestCard" ng-change="fillTestCard()">
-                    <option value="">Select a test credit card...</option>
-                    <option value="visa">Visa: 1111 1111 1111 1111</option>
-                    <option value="mastercard">MasterCard: 2222 2222 2222 2222</option>
-                    <option value="amex">American Express: 3333 333333 33333</option>
-                    <option value="discover">Discover: 4444 4444 4444 4444</option>
-                </select>
-                <small class="text-muted d-block mt-1">These are test card numbers that will always be accepted for testing purposes.</small>
-
-                <!-- Test Card Alert -->
-                <div class="alert alert-info alert-dismissible fade show mt-2" ng-if="showTestCardAlert">
-                    {{testCardMessage}}
-                    <button type="button" class="btn-close" ng-click="showTestCardAlert = false"></button>
+            <!-- (Optional) test card dropdown – safe to leave, Angular handles it -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Test Credit Card (optional)</label>
+                    <select class="form-select"
+                            ng-model="selectedTestCard"
+                            ng-change="fillTestCard()">
+                        <option value="">Select a test credit card...</option>
+                        <option value="visa">Visa: 1111 1111 1111 1111</option>
+                        <option value="mastercard">MasterCard: 2222 2222 2222 2222</option>
+                        <option value="amex">AmEx: 3333 333333 33333</option>
+                        <option value="discover">Discover: 4444 4444 4444 4444</option>
+                    </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <div id="testCardDisplay" class="text-muted small">
+                        {{testCardInfo}}
+                    </div>
                 </div>
             </div>
 
             <form name="billingForm" novalidate>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label"><strong>Cardholder Name *</strong></label>
-                        <input type="text" class="form-control" id="cardholderName" name="cardholderName"
-                               ng-model="billingData.cardholderName"
-                               ng-blur="validateBillingField('cardholderName', billingData.cardholderName)"
-                               ng-class="{'field-error': hasBillingError('cardholderName')}"
-                               required>
-                        <div class="error-message" ng-if="hasBillingError('cardholderName')">
-                            {{billingValidationErrors.cardholderName}}
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Cardholder Name *</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           id="cardholderName"
+                           name="cardholderName"
+                           ng-model="billingData.cardholderName"
+                           ng-blur="validateBillingField('cardholderName', billingData.cardholderName)"
+                           ng-class="{'field-error': hasBillingError('cardholderName')}"
+                           required>
+                    <div class="error-message" ng-if="hasBillingError('cardholderName')">
+                        {{billingValidationErrors.cardholderName}}
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label"><strong>Credit Card Number *</strong></label>
-                        <input type="text" class="form-control" id="cardNumber" name="cardNumber"
-                               ng-model="billingData.cardNumber"
-                               ng-blur="validateBillingField('cardNumber', billingData.cardNumber)"
-                               ng-class="{'field-error': hasBillingError('cardNumber')}"
-                               placeholder="1234 5678 9012 3456" required>
-                        <div class="error-message" ng-if="hasBillingError('cardNumber')">
-                            {{billingValidationErrors.cardNumber}}
-                        </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><strong>Card Number *</strong></label>
+                    <input type="text"
+                           class="form-control"
+                           id="cardNumber"
+                           name="cardNumber"
+                           ng-model="billingData.cardNumber"
+                           ng-blur="validateBillingField('cardNumber', billingData.cardNumber)"
+                           ng-class="{'field-error': hasBillingError('cardNumber')}"
+                           required>
+                    <div class="error-message" ng-if="hasBillingError('cardNumber')">
+                        {{billingValidationErrors.cardNumber}}
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label class="form-label"><strong>Expiry Date *</strong></label>
-                        <input type="text" class="form-control" id="expiryDate" name="expiryDate"
+                        <input type="text"
+                               class="form-control"
+                               id="expiryDate"
+                               name="expiryDate"
+                               placeholder="MM/YY"
+                               maxlength="5"
                                ng-model="billingData.expiryDate"
                                ng-blur="validateBillingField('expiryDate', billingData.expiryDate)"
                                ng-class="{'field-error': hasBillingError('expiryDate')}"
-                               placeholder="MM/YY" maxlength="5" required>
+                               required>
                         <div class="error-message" ng-if="hasBillingError('expiryDate')">
                             {{billingValidationErrors.expiryDate}}
                         </div>
                     </div>
+
                     <div class="col-md-4 mb-3">
                         <label class="form-label"><strong>CVV *</strong></label>
-                        <input type="text" class="form-control" id="cvv" name="cvv"
+                        <input type="text"
+                               class="form-control"
+                               id="cvv"
+                               name="cvv"
+                               maxlength="4"
                                ng-model="billingData.cvv"
                                ng-blur="validateBillingField('cvv', billingData.cvv)"
                                ng-class="{'field-error': hasBillingError('cvv')}"
-                               placeholder="123" maxlength="4" required>
+                               required>
                         <div class="error-message" ng-if="hasBillingError('cvv')">
                             {{billingValidationErrors.cvv}}
                         </div>
                     </div>
+
                     <div class="col-md-4 mb-3">
                         <label class="form-label"><strong>Billing ZIP Code *</strong></label>
-                        <input type="text" class="form-control" id="billingZipCode" name="billingZipCode"
+                        <input type="text"
+                               class="form-control"
+                               id="billingZipCode"
+                               name="billingZipCode"
+                               maxlength="5"
                                ng-model="billingData.billingZipCode"
                                ng-blur="validateBillingField('billingZipCode', billingData.billingZipCode)"
                                ng-class="{'field-error': hasBillingError('billingZipCode')}"
-                               maxlength="5" required>
+                               required>
                         <div class="error-message" ng-if="hasBillingError('billingZipCode')">
                             {{billingValidationErrors.billingZipCode}}
                         </div>
                     </div>
                 </div>
 
-                <!-- Full Billing Address (shown when NOT same as shipping) -->
+                <!-- Billing address fields (only if NOT same as shipping) -->
                 <div ng-if="!billingData.sameAsShipping">
-                    <h5 class="mt-4 mb-3">Billing Address Details</h5>
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            <label class="form-label"><strong>Billing Street Address *</strong></label>
-                            <input type="text" class="form-control" id="billingAddress" name="billingAddress"
-                                   ng-model="billingData.billingAddress"
-                                   ng-blur="validateBillingField('billingAddress', billingData.billingAddress)"
-                                   ng-class="{'field-error': hasBillingError('billingAddress')}"
-                                   required>
-                            <div class="error-message" ng-if="hasBillingError('billingAddress')">
-                                {{billingValidationErrors.billingAddress}}
-                            </div>
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Billing Address *</strong></label>
+                        <input type="text"
+                               class="form-control"
+                               id="billingAddress"
+                               name="billingAddress"
+                               ng-model="billingData.billingAddress"
+                               ng-blur="validateBillingField('billingAddress', billingData.billingAddress)"
+                               ng-class="{'field-error': hasBillingError('billingAddress')}"
+                               required>
+                        <div class="error-message" ng-if="hasBillingError('billingAddress')">
+                            {{billingValidationErrors.billingAddress}}
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label"><strong>Billing City *</strong></label>
-                            <input type="text" class="form-control" id="billingCity" name="billingCity"
+                            <input type="text"
+                                   class="form-control"
+                                   id="billingCity"
+                                   name="billingCity"
                                    ng-model="billingData.billingCity"
                                    ng-blur="validateBillingField('billingCity', billingData.billingCity)"
                                    ng-class="{'field-error': hasBillingError('billingCity')}"
@@ -374,24 +402,34 @@
                                 {{billingValidationErrors.billingCity}}
                             </div>
                         </div>
+
                         <div class="col-md-3 mb-3">
                             <label class="form-label"><strong>Billing State *</strong></label>
-                            <input type="text" class="form-control" id="billingState" name="billingState"
+                            <input type="text"
+                                   class="form-control"
+                                   id="billingState"
+                                   name="billingState"
+                                   maxlength="2"
                                    ng-model="billingData.billingState"
                                    ng-blur="validateBillingField('billingState', billingData.billingState)"
                                    ng-class="{'field-error': hasBillingError('billingState')}"
-                                   maxlength="2" required>
+                                   required>
                             <div class="error-message" ng-if="hasBillingError('billingState')">
                                 {{billingValidationErrors.billingState}}
                             </div>
                         </div>
+
                         <div class="col-md-3 mb-3">
                             <label class="form-label"><strong>Billing ZIP Code *</strong></label>
-                            <input type="text" class="form-control" id="billingZipCodeFull" name="billingZipCodeFull"
+                            <input type="text"
+                                   class="form-control"
+                                   id="billingZipCode2"
+                                   name="billingZipCode2"
+                                   maxlength="5"
                                    ng-model="billingData.billingZipCode"
                                    ng-blur="validateBillingField('billingZipCode', billingData.billingZipCode)"
                                    ng-class="{'field-error': hasBillingError('billingZipCode')}"
-                                   maxlength="5" required>
+                                   required>
                             <div class="error-message" ng-if="hasBillingError('billingZipCode')">
                                 {{billingValidationErrors.billingZipCode}}
                             </div>
@@ -399,28 +437,19 @@
                     </div>
                 </div>
 
-                <!-- Billing Address Preview (shown when same as shipping) -->
-                <div ng-if="billingData.sameAsShipping && shippingData.address">
-                    <h5 class="mt-4 mb-3">Billing Address (Same as Shipping)</h5>
-                    <div class="p-3 border rounded bg-light">
-                        <p class="mb-1"><strong>Address:</strong> {{shippingData.address}}</p>
-                        <p class="mb-1"><strong>City:</strong> {{shippingData.city}}</p>
-                        <p class="mb-1"><strong>State:</strong> {{shippingData.state}}</p>
-                        <p class="mb-0"><strong>ZIP Code:</strong> {{shippingData.zipCode}}</p>
-                    </div>
-                </div>
-
-                <button type="button" class="btn btn-primary mt-4" ng-click="submitOrder()">
-                    Complete Order
-                </button>
-
-                <div class="mt-2 text-muted" ng-if="hasValidationErrors() || hasBillingValidationErrors()">
-                    <small>Please fix the validation errors above before submitting.</small>
+                <!-- Buttons -->
+                <div class="mt-3">
+                    <button type="button" class="btn btn-secondary me-2" ng-click="resetForm()">
+                        Reset
+                    </button>
+                    <button type="button" class="btn btn-primary" ng-click="submitOrder()">
+                        Validate &amp; Submit Order
+                    </button>
                 </div>
             </form>
         </div>
 
-        <!-- Order Complete Message - Shows after submission -->
+        <!-- Order Complete message -->
         <div class="form-section" ng-if="orderSubmitted">
             <h3>✅ Order Complete!</h3>
             <p>Your order has been successfully submitted. Below is the complete order JSON document.</p>
@@ -434,6 +463,7 @@
         </div>
     </main>
 
+    <!-- Aside: Order summary on the right, same layout as other pages -->
     <aside ng-if="cartSummary && !orderSubmitted">
         <div class="form-section">
             <h3>Order Summary</h3>
@@ -441,32 +471,25 @@
             <p><strong>Subtotal:</strong> ${{cartSummary.totalPrice}}</p>
             <p><strong>Shipping:</strong> ${{calculateShipping()}}</p>
             <p><strong>Total:</strong> ${{calculateTotal()}}</p>
-            <p ng-if="estimatedDelivery"><strong>Delivery:</strong> {{estimatedDelivery}}</p>
+            <p ng-if="estimatedDelivery">
+                <strong>Delivery:</strong> {{estimatedDelivery}}
+            </p>
 
-            <div class="mt-3" ng-if="!hasValidationErrors() && shippingData.shippingCarrier && shippingData.shippingMethod">
-                <p class="validation-success">✓ Ready to submit after billing information</p>
+            <div class="mt-3"
+                 ng-if="!hasValidationErrors() && shippingData.shippingCarrier && shippingData.shippingMethod">
+                <p class="validation-success">
+                    ✓ Ready to submit after billing information
+                </p>
             </div>
-        </div>
-    </aside>
-
-    <!-- Order Summary After Submission -->
-    <aside ng-if="cartSummary && orderSubmitted">
-        <div class="form-section">
-            <h3>Order Confirmation</h3>
-            <p><strong>Items:</strong> {{cartSummary.itemCount}}</p>
-            <p><strong>Subtotal:</strong> ${{cartSummary.totalPrice}}</p>
-            <p><strong>Shipping:</strong> ${{shippingCost}}</p>
-            <p><strong>Total:</strong> ${{calculateTotal()}}</p>
-            <p ng-if="estimatedDelivery"><strong>Delivery:</strong> {{estimatedDelivery}}</p>
-            <p><strong>Status:</strong> <span class="text-success">Submitted</span></p>
-            <a href="handleReturns.html" class="btn btn-outline-secondary mt-2">→ Go to Returns (test)</a>
         </div>
     </aside>
 </div>
 
+<!-- Footer (same as index.html) -->
 <footer>
     <p><a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a> | <a href="#">Privacy Policy</a></p>
     <p>&copy; 2025 HiTech Store. All Rights Reserved.</p>
 </footer>
+
 </body>
 </html>

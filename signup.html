@@ -1,116 +1,98 @@
+<!-- Group Member Tasks:
+    Binesh - HTML (Page Structure), CSS (Page Style and Cosmetics), Bootstrap (Professional look), JavaScript (page behaviors and field integrity checks), Angular
+    Kyle - JSON Shopper Document collection (containing the details from the new/update shopper details form)
+    Vedang - jQuery (Search and update the JSON product document)
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HiTech Store - Sign Up</title>
-    <!-- Homepage styling -->
+
+    <!-- Shared page layout -->
     <link rel="stylesheet" href="Storefront_Page_Layout.css">
-    <!-- Bootstrap signup page styling -->
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+
+    <!-- jQuery (for AJAX calls to the API) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <!-- Script for signup validation -->
     <script src="signupValidation.js"></script>
+
     <style>
         body {
             padding: 0;
             margin: 0;
         }
-        /* Main headers*/
-        main h2 {
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-            font-size: 1.8rem;
-        }
 
-        main h3 {
-            color: #3498db;
-            margin-bottom: 15px;
-        }
-
-        /* Nav */
-        nav {
-            flex: 1 1 15%;
-        }
-
-        /* Main */
         main {
-            flex: 1 1 50%;
+            flex: 2;
+            padding: 20px 40px;
         }
 
-        /* Main form */
+        aside {
+            flex: 1;
+            background-color: #f7f9fc;
+            padding: 20px;
+            border-left: 1px solid #ddd;
+        }
+
+        .content-layout {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
         .formSetup {
-            flex: 1 1 55%;
-            background: white;
+            background: #ffffff;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
         }
 
         .form-title {
             color: #2c3e50;
-            margin-bottom: 25px;
-            text-align: center;
+            margin-bottom: 20px;
         }
 
-        /* Aside */
-        aside {
-            flex: 1 1 30%;
-            min-width: 300px;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .error-message {
+            color: #c0392b;
+            font-size: 0.9rem;
+            margin-top: 4px;
         }
 
-        /* Marketing section styling */
-        .marketing-section {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .marketing-item {
+        .site-footer {
+            margin-top: 20px;
             padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            text-align: center;
+            background-color: #2c3e50;
+            color: #ecf0f1;
         }
-
-        .marketing-item:last-child {
-            border-bottom: none;
-        }
-
     </style>
-
 </head>
 <body>
-
-<!-- Header -->
 <header>
-    <a href="index.html"> <img src="Images/HiTech Logo Transparent.png" alt="HiTech Store Logo"
-                               style="height:150px; width: 150px; filter:hue-rotate(60deg)"> </a>
-    <div>
-        <h1>HiTech Store</h1>
-        <p><em>Your one-stop shop for all tech gadgets</em></p>
-    </div>
+    <h1>HiTech Storefront</h1>
 </header>
 
-<!-- Main Layout -->
-<div class="container">
-    <!-- Navigation -->
-    <nav>
-        <ul style="padding-left: 10px;">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="signup.html">Login</a></li>
-            <li><a href="shopper.html">Shopper Management</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="shoppingCart.html">Shopping Cart</a></li>
-            <li><a href="handleReturns.html">Returns</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </nav>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shopper.html">Shopper Management</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="shoppingCart.html">Shopping Cart</a></li>
+        <li><a href="shippingAndBilling.html">Shipping & Billing</a></li>
+        <li><a href="handleReturns.html">Returns</a></li>
+        <li><a href="signup.html">Login</a></li>
+    </ul>
+</nav>
 
+<div class="content-layout">
     <main>
         <h2>Sign Up for Exclusive Benefits</h2>
 
@@ -145,15 +127,16 @@
 
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="terms">
-                    <label class="form-check-label" for="terms">I agree to the <a href="#">
-                        Term & Conditions </a> </label>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="#">Terms &amp; Conditions</a>
+                    </label>
                     <div class="error-message" id="termsError"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="background-color: #2c3e50; border-color: #2aacb8;">
+                <button type="submit" class="btn btn-primary"
+                        style="background-color: #2c3e50; border-color: #2aacb8;">
                     Create Account
                 </button>
-
             </form>
 
             <div class="mt-4">
@@ -162,35 +145,20 @@
         </div>
     </main>
 
-    <!-- Aside -->
     <aside>
-        <div class="marketing-section">
-            <h3 class="form-title">Member Perks</h3>
-
-            <div class="marketing-item">
-                <p><strong>15% Off:</strong> Save on your first order when you create an account!</p>
-            </div>
-
-            <div class="marketing-item">
-                <p><strong>Wish Lists:</strong> Save items for later and get notified when prices drop</p>
-            </div>
-
-            <div class="marketing-item">
-                <p><strong>Order Tracking:</strong> Track your orders in real-time</p>
-            </div>
-
-            <div class="marketing-item">
-                <p><strong>Exclusive Deals:</strong> Get access to members-only sales and promotions</p>
-            </div>
-        </div>
+        <h3>Why Create an Account?</h3>
+        <p>As a registered HiTech Store customer, you can:</p>
+        <ul>
+            <li>Save your shipping and billing information for faster checkout</li>
+            <li>View your order history</li>
+            <li>Track returns and exchanges</li>
+            <li>Receive special offers and discounts</li>
+        </ul>
     </aside>
 </div>
 
-<!-- Footer -->
-<footer>
-    <p><a href="#">Terms of Use</a> | <a href="#">Cookie Policy</a> | <a href="#">Privacy Policy</a></p>
-    <p>&copy; 2025 HiTech Store. All Rights Reserved.</p>
+<footer class="site-footer">
+    <p>&copy; 2025 HiTech Store</p>
 </footer>
-
 </body>
 </html>

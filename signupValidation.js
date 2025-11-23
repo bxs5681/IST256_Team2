@@ -1,46 +1,20 @@
-// Validation rules
-const rules = {
-    username: {required: true},
-    email: {required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/},
-    password: {required: true, minLength: 8},
-    confirmPassword: {required: true},
-    terms: {required: true}
-};
+// Clears all error messages
+function clearErrors() {
+    const errorFields = ['usernameError', 'emailError', 'passwordError', 'confirmPasswordError', 'termsError'];
+    errorFields.forEach(id => {
+        const errorElement = document.getElementById(id);
+        if (errorElement) {
+            errorElement.textContent = '';
+        }
+    });
+}
 
-// Error messages
-const messages = {
-    username: 'Username is required',
-    email: {
-        required: 'Email is required',
-        invalid: 'Please enter a valid email address (e.g., joe@test.com)'
-    },
-    password: {
-        required: 'Password is required',
-        tooShort: 'Password must be at least 8 characters long'
-    },
-    confirmPassword: {
-        required: 'Please confirm your password',
-        mismatch: 'Passwords do not match'
-    },
-    terms: 'You must agree to the terms and conditions'
-};
-
-// Main validation function
-function validateForm() {
-    clearErrors();
-    let isValid = true;
-
-    // Validate each field
-    if (!validateField('username')) isValid = false;
-    if (!validateField('email')) isValid = false;
-    if (!validateField('password')) isValid = false;
-    if (!validateField('confirmPassword')) isValid = false;
-    if (!validateField('terms')) isValid = false;
-
-    if (isValid) {
-        alert('Account created successfully!');
+// Show specific error message
+function showError(fieldName, message) {
+    const errorElement = document.getElementById(fieldName + 'Error');
+    if (errorElement) {
+        errorElement.textContent = message;
     }
-    return isValid;
 }
 
 // Validate individual field
@@ -57,97 +31,135 @@ function validateField(fieldName) {
 
     clearFieldError(fieldName);
 
-    // Required field check
-    if (rules[fieldName].required && !hasValue(value)) {
-        showError(fieldName, getMessage(fieldName, 'required'));
-        isValid = false;
-    }
-
-    // Skip further checks if field is empty
-    if (!hasValue(value)) return isValid;
-
-    // Specific validations
-    switch (fieldName) {
-        case 'email':
-            if (!rules.email.pattern.test(value)) {
-                showError(fieldName, messages.email.invalid);
-                isValid = false;
-            }
-            break;
-
-        case 'password':
-            if (value.length < rules.password.minLength) {
-                showError(fieldName, messages.password.tooShort);
-                isValid = false;
-            }
-            break;
-
-        case 'confirmPassword':
-            const password = form.password.value;
-            if (password !== value) {
-                showError(fieldName, messages.confirmPassword.mismatch);
-                isValid = false;
-            }
-            break;
+    // Rules for each field
+    if (fieldName === 'username') {
+        if (!value) {
+            showError('username', 'Username is required.');
+            isValid = false;
+        } else if (value.length < 3) {
+            showError('username', 'Username must be at least 3 characters.');
+            isValid = false;
+        }
+    } else if (fieldName === 'email') {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!value) {
+            showError('email', 'Email is required.');
+            isValid = false;
+        } else if (!emailPattern.test(value)) {
+            showError('email', 'Please enter a valid email address.');
+            isValid = false;
+        }
+    } else if (fieldName === 'password') {
+        if (!value) {
+            showError('password', 'Password is required.');
+            isValid = false;
+        } else if (value.length < 6) {
+            showError('password', 'Password must be at least 6 characters.');
+            isValid = false;
+        }
+    } else if (fieldName === 'confirmPassword') {
+        const password = form.password.value.trim();
+        if (!value) {
+            showError('confirmPassword', 'Please confirm your password.');
+            isValid = false;
+        } else if (value !== password) {
+            showError('confirmPassword', 'Passwords do not match.');
+            isValid = false;
+        }
+    } else if (fieldName === 'terms') {
+        if (!value) {
+            showError('terms', 'You must agree to the terms and conditions.');
+            isValid = false;
+        }
     }
 
     return isValid;
 }
 
-// Helper functions
-function hasValue(value) {
-    if (typeof value === 'boolean') return value;
-    return value && value !== '';
-}
-
-function getMessage(fieldName, type = 'required') {
-    const message = messages[fieldName];
-    return typeof message === 'object' ? message[type] : message;
-}
-
-function showError(fieldName, message) {
-    const errorElement = document.getElementById(fieldName + 'Error');
-    const fieldElement = document.forms.signupForm[fieldName];
-
-    if (errorElement) errorElement.textContent = message;
-    if (fieldElement) fieldElement.classList.add('error-field');
-}
-
+// Clear error message for a specific field
 function clearFieldError(fieldName) {
     const errorElement = document.getElementById(fieldName + 'Error');
-    const fieldElement = document.forms.signupForm[fieldName];
-
-    if (errorElement) errorElement.textContent = '';
-    if (fieldElement) fieldElement.classList.remove('error-field');
+    if (errorElement) {
+        errorElement.textContent = '';
+    }
 }
 
-function clearErrors() {
-    const fields = ['username', 'email', 'password', 'confirmPassword', 'terms'];
-    fields.forEach(field => clearFieldError(field));
+// MAIN FORM VALIDATION + AJAX TO MONGODB
+function validateForm() {
+    clearErrors();
+    let isValid = true;
+
+    // Validate each field
+    if (!validateField('username')) isValid = false;
+    if (!validateField('email')) isValid = false;
+    if (!validateField('password')) isValid = false;
+    if (!validateField('confirmPassword')) isValid = false;
+    if (!validateField('terms')) isValid = false;
+
+    if (!isValid) {
+        // Stop normal submit if there are any validation errors
+        return false;
+    }
+
+    const form = document.forms.signupForm;
+    const payload = {
+        username: form.username.value.trim(),
+        email: form.email.value.trim(),
+        password: form.password.value
+    };
+
+    // If jQuery is not present, just show a basic message and stop.
+    if (typeof $ === 'undefined') {
+        alert('Account validated on the frontend, but jQuery/AJAX is not available to save to the database.');
+        return false;
+    }
+
+    const API_BASE = "https://130.203.136.203:3002/api";
+
+    $.ajax({
+        url: API_BASE + "/users/register",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        dataType: "json"
+    })
+        .done(function (resp) {
+            const userId = resp && (resp.userId || resp._id) ? (resp.userId || resp._id) : null;
+            alert("✅ Account created successfully in the database!" + (userId ? "\nUser ID: " + userId : ""));
+
+            // Save a light-weight copy of the current user so other pages (shipping/returns) can use it.
+            try {
+                localStorage.setItem("currentUser", JSON.stringify({
+                    _id: userId,
+                    username: payload.username,
+                    email: payload.email
+                }));
+            } catch (e) {
+                console.warn("Unable to persist currentUser to localStorage:", e);
+            }
+        })
+        .fail(function (xhr) {
+            let msg = "Error creating account.";
+            if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+                msg = xhr.responseJSON.error;
+            }
+            alert("❌ " + msg);
+        });
+
+    // Always prevent the normal form post since we handled it via AJAX.
+    return false;
 }
 
-// Setup event listeners
+// Attach blur events for live validation
 function setupValidation() {
     const form = document.forms.signupForm;
-    if (!form) return;
 
-    // Add blur validation to all fields
-    const fields = ['username', 'email', 'password', 'confirmPassword'];
-    fields.forEach(field => {
-        form[field].addEventListener('blur', () => validateField(field));
-        form[field].addEventListener('input', () => clearFieldError(field));
-    });
-
-    // Terms checkbox
+    form.username.addEventListener('blur', () => validateField('username'));
+    form.email.addEventListener('blur', () => validateField('email'));
+    form.password.addEventListener('blur', () => validateField('password'));
+    form.confirmPassword.addEventListener('blur', () => validateField('confirmPassword'));
     form.terms.addEventListener('change', () => validateField('terms'));
-
-    // Real-time password confirmation
-    form.password.addEventListener('input', () => {
-        if (form.confirmPassword.value) {
-            validateField('confirmPassword');
-        }
-    });
 }
 
-// Page loads
+// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', setupValidation);
