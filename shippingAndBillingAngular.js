@@ -1,3 +1,6 @@
+// shippingAndBillingAngular.js
+// Uses AngularJS to manage Shipping/Billing and posts final order JSON to Team 2 API.
+
 const API_BASE = "https://130.203.136.203:3002/api";
 
 angular.module('shippingApp', [])
@@ -66,9 +69,8 @@ angular.module('shippingApp', [])
                 try {
                     const cartData = JSON.parse(cartJson);
 
-                    // Check if it's the new structure
+                    // New structure from shoppingCart.js
                     if (cartData.items && Array.isArray(cartData.items)) {
-                        // New structure from shoppingCart.js
                         $scope.cartSummary = {
                             itemCount: cartData.itemCount || cartData.items.reduce((sum, item) => sum + item.quantity, 0),
                             totalPrice: cartData.totalPrice || cartData.items.reduce((sum, item) => sum + (item.productPrice * item.quantity), 0).toFixed(2),
@@ -84,7 +86,6 @@ angular.module('shippingApp', [])
                             items: cartData.items || []
                         };
                     } else {
-                        // Fallback
                         console.warn('Unexpected cart structure:', cartData);
                         $scope.cartSummary = null;
                     }
@@ -103,12 +104,8 @@ angular.module('shippingApp', [])
         // FUNCTION: Clear the shopping cart from localStorage
         function clearShoppingCart() {
             try {
-                // Clear the main shopping cart
                 localStorage.removeItem('shoppingCart');
-
-                // Also clear the checkout cart to be thorough
                 localStorage.removeItem('checkoutCart');
-
                 console.log('Shopping cart cleared successfully');
                 return true;
             } catch (e) {
@@ -146,7 +143,6 @@ angular.module('shippingApp', [])
                 $scope.calculateShipping();
             }
 
-            // Update JSON preview
             $scope.updateOrderJson();
         };
 
@@ -180,12 +176,9 @@ angular.module('shippingApp', [])
                     break;
             }
             $scope.billingValidationErrors[fieldName] = error;
-
-            // Update JSON preview
             $scope.updateOrderJson();
         };
 
-        // Check if there are any errors
         $scope.hasValidationErrors = function() {
             return Object.values($scope.validationErrors).some(error => error !== '');
         };
@@ -217,7 +210,6 @@ angular.module('shippingApp', [])
             return $scope.billingValidationErrors[fieldName] && $scope.billingValidationErrors[fieldName].length > 0;
         };
 
-        // Method to show a test card message
         $scope.showTestCardMessage = function(message) {
             $scope.testCardMessage = message;
             $scope.showTestCardAlert = true;
@@ -228,7 +220,6 @@ angular.module('shippingApp', [])
             }, 5000);
         };
 
-        // Method to detect if it's a test card (uses BillingValidator.isMockCard)
         $scope.isTestCard = function() {
             if (!$scope.billingData.cardNumber) return false;
             const cleanNumber = $scope.billingData.cardNumber.replace(/[\s\-]/g, '');
@@ -259,17 +250,35 @@ angular.module('shippingApp', [])
             return (subtotal + shipping).toFixed(2);
         };
 
-        // Generate order JSON
+        // Generate order JSON (includes cart + items)
         function generateFinalOrderJson() {
             if (!$scope.cartSummary) {
                 return JSON.stringify({ error: 'No cart data available' }, null, 2);
             }
 
+            // Get logged-in user (set by signupValidation.js)
+            let shopperEmail = 'unknown@customer.com';
+            try {
+                const stored = JSON.parse(localStorage.getItem('currentUser') || 'null');
+                if (stored && stored.email) {
+                    shopperEmail = stored.email;
+                }
+            } catch (e) {
+                console.warn('Unable to read currentUser from localStorage:', e);
+            }
+
+            const cartTotals = {
+                itemCount: $scope.cartSummary.itemCount,
+                totalPrice: $scope.cartSummary.totalPrice,
+                totalWeight: $scope.cartSummary.totalWeight
+            };
+
+            const cartItems = $scope.cartSummary.items || [];
+
             const order = {
                 orderId: 'ORD-' + Date.now(),
                 shopper: {
-                    // NOTE: If you have a logged-in user, plug their info in here
-                    email: $scope.billingData.email || 'unknown@customer.com'
+                    email: shopperEmail
                 },
                 shipping: {
                     address: $scope.shippingData.address,
@@ -282,7 +291,7 @@ angular.module('shippingApp', [])
                 },
                 billing: {
                     cardholderName: $scope.billingData.cardholderName,
-                    cardLast4: $scope.billingData.cardNumber.slice(-4),
+                    cardLast4: ($scope.billingData.cardNumber || '').slice(-4),
                     expiryDate: $scope.billingData.expiryDate,
                     sameAsShipping: $scope.billingData.sameAsShipping,
                     billingAddress: $scope.billingData.billingAddress,
@@ -291,6 +300,11 @@ angular.module('shippingApp', [])
                     billingZipCode: $scope.billingData.billingZipCode,
                     isTestCard: $scope.isTestCard()
                 },
+                cart: {
+                    items: cartItems,
+                    totals: cartTotals
+                },
+                items: cartItems, // convenience for returns / Mongo queries
                 totals: {
                     subtotal: $scope.cartSummary.totalPrice,
                     shipping: $scope.shippingCost || '0.00',
@@ -318,7 +332,6 @@ angular.module('shippingApp', [])
             $scope.validateBillingField('expiryDate', $scope.billingData.expiryDate);
             $scope.validateBillingField('cvv', $scope.billingData.cvv);
 
-            // Only validate billing address fields if they're different from shipping
             if (!$scope.billingData.sameAsShipping) {
                 $scope.validateBillingField('billingAddress', $scope.billingData.billingAddress);
                 $scope.validateBillingField('billingCity', $scope.billingData.billingCity);
@@ -328,18 +341,14 @@ angular.module('shippingApp', [])
             $scope.validateBillingField('billingZipCode', $scope.billingData.billingZipCode);
 
             if ($scope.hasValidationErrors() || $scope.hasBillingValidationErrors()) {
-                const shippingErrors = Object.values($scope.validationErrors)
-                    .filter(error => error !== '');
-                const billingErrors = Object.values($scope.billingValidationErrors)
-                    .filter(error => error !== '');
-
+                const shippingErrors = Object.values($scope.validationErrors).filter(e => e !== '');
+                const billingErrors = Object.values($scope.billingValidationErrors).filter(e => e !== '');
                 const allErrors = [...shippingErrors, ...billingErrors];
 
                 alert('❌ Please fix the following errors:\n\n• ' + allErrors.join('\n• '));
                 return false;
             }
 
-            // Check if cart exists
             if (!$scope.cartSummary) {
                 alert('❌ No cart data found. Please return to shopping cart and try again.');
                 return false;
@@ -355,7 +364,7 @@ angular.module('shippingApp', [])
                 `${$scope.shippingData.address}\n` +
                 `${$scope.shippingData.city}, ${$scope.shippingData.state} ${$scope.shippingData.zipCode}\n\n` +
                 `Billing: ${$scope.billingData.cardholderName}\n` +
-                `Card: ****${$scope.billingData.cardNumber.slice(-4)}\n` +
+                `Card: ****${($scope.billingData.cardNumber || '').slice(-4)}\n` +
                 `Carrier: ${$scope.shippingData.shippingCarrier} ${$scope.shippingData.shippingMethod}\n` +
                 `Delivery: ${$scope.estimatedDelivery}\n` +
                 `${$scope.isTestCard() ? '\n🧪 TEST MODE: Using test credit card\n' : ''}\n` +
@@ -373,7 +382,7 @@ angular.module('shippingApp', [])
             $scope.orderSubmitted = true;
             $scope.showSuccess = true;
 
-            // Save order to localStorage
+            // Save order to localStorage (so Returns can see it as "currentOrder")
             localStorage.setItem('currentOrder', $scope.finalOrderJson);
 
             // CLEAR THE SHOPPING CART
@@ -445,12 +454,10 @@ angular.module('shippingApp', [])
             $scope.showTestCardAlert = false;
             $scope.testCardMessage = '';
 
-            // Reload cart data in case user wants to start a new order
             loadCartData();
             $scope.updateOrderJson();
         };
 
-        // Method to handle test card selection
         $scope.fillTestCard = function() {
             console.log('fillTestCard called with:', $scope.selectedTestCard);
 
@@ -458,15 +465,12 @@ angular.module('shippingApp', [])
                 const cardDetails = BillingValidator.getMockCardDetails($scope.selectedTestCard);
                 console.log('Card details:', cardDetails);
 
-                // Use $timeout to ensure Angular detects the changes
                 $timeout(() => {
-                    // Fill in the form fields using Angular
                     $scope.billingData.cardNumber = cardDetails.number;
                     $scope.billingData.expiryDate = cardDetails.expiry;
                     $scope.billingData.cvv = cardDetails.cvv;
                     $scope.billingData.cardholderName = cardDetails.name;
 
-                    // Fill billing address (only if not same as shipping)
                     if (!$scope.billingData.sameAsShipping) {
                         $scope.billingData.billingAddress = cardDetails.billingAddress;
                         $scope.billingData.billingCity = cardDetails.billingCity;
@@ -474,10 +478,8 @@ angular.module('shippingApp', [])
                     }
                     $scope.billingData.billingZipCode = cardDetails.billingZipCode;
 
-                    // Force Angular to update the view
                     $scope.$apply();
 
-                    // Also update the DOM directly as a backup
                     $timeout(() => {
                         $('#cardNumber').val(cardDetails.number).trigger('input');
                         $('#expiryDate').val(cardDetails.expiry);
@@ -489,10 +491,8 @@ angular.module('shippingApp', [])
                             $('#billingAddress').val(cardDetails.billingAddress);
                             $('#billingCity').val(cardDetails.billingCity);
                             $('#billingState').val(cardDetails.billingState);
-                            $('#billingZipCodeFull').val(cardDetails.billingZipCode);
                         }
 
-                        // Trigger blur events to validate
                         $('#cardNumber').trigger('blur');
                         $('#expiryDate').trigger('blur');
                         $('#cvv').trigger('blur');
@@ -500,15 +500,14 @@ angular.module('shippingApp', [])
                         $('#billingZipCode').trigger('blur');
                     }, 100);
 
-                    // Clear validation errors
                     Object.keys($scope.billingValidationErrors).forEach(key => {
                         $scope.billingValidationErrors[key] = '';
                     });
 
-                    // Show success message
-                    $scope.showTestCardMessage(`✅ ${$scope.selectedTestCard.charAt(0).toUpperCase() + $scope.selectedTestCard.slice(1)} test card filled!`);
+                    $scope.showTestCardMessage(
+                        `✅ ${$scope.selectedTestCard.charAt(0).toUpperCase() + $scope.selectedTestCard.slice(1)} test card filled!`
+                    );
 
-                    // Reset dropdown after a short delay
                     $timeout(() => {
                         $scope.selectedTestCard = '';
                         $scope.$apply();
@@ -517,7 +516,6 @@ angular.module('shippingApp', [])
             }
         };
 
-        // Method to show test card messages
         $scope.updateTestCardDisplay = function() {
             if ($scope.isTestCard()) {
                 $scope.testCardMessage = '🧪 Using a test credit card number.';
@@ -526,7 +524,6 @@ angular.module('shippingApp', [])
             }
         };
 
-        // Function to update JSON preview
         $scope.updateOrderJson = function() {
             if ($scope.hasErrors() || !$scope.cartSummary) {
                 $scope.finalOrderJson = 'Please complete the form and fix any errors to see the order JSON.';
@@ -540,7 +537,7 @@ angular.module('shippingApp', [])
         loadCartData();
         $scope.updateOrderJson();
 
-        // Watch for changes to update JSON in real-time
+        // Watchers to keep JSON preview in sync
         $scope.$watch('shippingData', function() {
             $scope.updateOrderJson();
         }, true);
@@ -551,5 +548,5 @@ angular.module('shippingApp', [])
 
         $scope.$watch('cartSummary', function() {
             $scope.updateOrderJson();
-        });
+        }, true);
     }]);

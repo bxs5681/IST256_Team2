@@ -1,3 +1,7 @@
+// returns.js
+// Handle Returns page: build return JSON + send to Team 2 API and
+// integrate with products & previous orders.
+
 $(function () {
     const API_BASE = "https://130.203.136.203:3002/api";
     const LS_PRODUCTS = 'products';
@@ -17,14 +21,30 @@ $(function () {
             }
         }
 
-        $.getJSON('productData.json')
+        // Try loading from MongoDB products collection via API
+        $.getJSON(API_BASE + '/products')
             .done(function (data) {
                 if (Array.isArray(data)) {
                     productCache = data;
+                    try {
+                        localStorage.setItem(LS_PRODUCTS, JSON.stringify(data));
+                    } catch (e) {
+                        console.warn('Unable to cache products to localStorage:', e);
+                    }
                 }
             })
             .fail(function () {
-                console.warn('Unable to load product data for returns page.');
+                console.warn('Unable to load products from API, falling back to productData.json.');
+                // Fallback to static JSON if API not available
+                $.getJSON('productData.json')
+                    .done(function (data) {
+                        if (Array.isArray(data)) {
+                            productCache = data;
+                        }
+                    })
+                    .fail(function () {
+                        console.warn('Unable to load product data for returns page.');
+                    });
             });
     }
 
@@ -180,7 +200,7 @@ $(function () {
         const hasAnyOrder = orders.length > 0;
 
         if (!hasAnyOrder) {
-            if (hint) hint.textContent = 'No prior orders found. You must place an order before starting a return.';
+            if (hint) hint.textContent = 'No prior orders found on this device. You must place an order before starting a return.';
             if (addBtn) addBtn.disabled = true;
             if (submitBtn) submitBtn.disabled = true;
             if (productSearch) productSearch.disabled = true;
@@ -220,7 +240,13 @@ $(function () {
                 if (orderNoEl) orderNoEl.value = chosenId;
 
                 try {
-                    const cartItems = (chosen.cart && chosen.cart.items) ? chosen.cart.items : [];
+                    let cartItems = [];
+                    if (chosen.cart && Array.isArray(chosen.cart.items)) {
+                        cartItems = chosen.cart.items;
+                    } else if (Array.isArray(chosen.items)) {
+                        cartItems = chosen.items;
+                    }
+
                     returnItems = (Array.isArray(cartItems) ? cartItems : []).map(function (it) {
                         return {
                             productId: it.productId,

@@ -1,5 +1,8 @@
 // productValidation.js
 
+// Base URL for Team 2 API (Node + Mongo)
+const API_BASE = "https://130.203.136.203:3002/api";
+
 // Validation rules
 const pmRules = {
     productId: { required: true, pattern: /^[0-9-_]+$/ }, // numeric with hyphens/underscores
@@ -56,7 +59,7 @@ function validateProductManagementForm() {
 
     if (!isValid) return false;
 
-    // Build JSON doc and save to localStorage
+    // Build JSON doc
     const form = document.getElementById('productManagementForm');
     const productDoc = {
         productId: form.productId.value.trim(),
@@ -69,12 +72,50 @@ function validateProductManagementForm() {
         createdAt: new Date().toISOString()
     };
 
-    //const list = JSON.parse(localStorage.getItem('products') || '[]');
-    //list.push(productDoc);
-    //localStorage.setItem('products', JSON.stringify(list));
-    
-    //('Product saved successfully!');
-    return true; // allow form submit
+    // 1) Save into localStorage so Shopping Cart / Returns can still use the product list
+    try {
+        const list = JSON.parse(localStorage.getItem('products') || '[]');
+        const idx = list.findIndex(p => p && p.productId === productDoc.productId);
+        if (idx >= 0) {
+            list[idx] = productDoc; // update existing
+        } else {
+            list.push(productDoc);  // add new
+        }
+        localStorage.setItem('products', JSON.stringify(list));
+    } catch (e) {
+        console.warn('Unable to persist products to localStorage:', e);
+    }
+
+    // 2) Show JSON on page
+    displayProductJSON(productDoc);
+
+    // 3) Send to MongoDB via Team 2 API (if jQuery is present)
+    if (typeof $ !== 'undefined') {
+        $.ajax({
+            url: API_BASE + '/products',
+            method: 'POST',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(productDoc)
+        })
+            .done(function (resp) {
+                console.log('Product saved to MongoDB:', resp);
+                alert('✅ Product saved to database successfully.');
+            })
+            .fail(function (xhr) {
+                console.error('Error saving product to MongoDB:', xhr);
+                let msg = 'There was a problem saving the product to the database.';
+                if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+                    msg = xhr.responseJSON.error;
+                }
+                alert('❌ ' + msg);
+            });
+    } else {
+        alert('Product validated and saved locally, but jQuery/AJAX is not available for database save.');
+    }
+
+    // Prevent normal form submit; we handled it via AJAX
+    return false;
 }
 
 // Individual field validation
