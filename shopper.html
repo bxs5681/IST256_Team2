@@ -112,8 +112,7 @@
         <div class="formSetup">
             <h3 class="form-title">Shopper Information</h3>
 
-            <form id="shopperManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate
-                  onsubmit="return handleShopperSubmit(event)">
+            <form id="shopperManagementForm" style="padding-left: 50px; padding-right: 50px;" novalidate>
 
                 <div class="mb-3">
                     <label for="shopperEmail" class="form-label"><strong>Shopper Email Address:</strong></label>
@@ -181,7 +180,13 @@
                        placeholder="Enter Shopper name or email address">
                 <div class="error-message" id="shopperSearchError"></div>
             </div>
-            <button type="button" class="btn btn-outline-primary" id="searchButton">Search</button>
+            <button type="button" class="btn btn-outline-primary mb-3" id="searchButton">Search</button>
+
+            <!-- Add this section for search results -->
+            <div id="searchResults" style="display: none;">
+                <h5>Search Results</h5>
+                <div id="searchResultsContent"></div>
+            </div>
         </div>
     </aside>
 </div>

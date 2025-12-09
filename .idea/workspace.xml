@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="293cc9c9-174b-4922-87ab-bc15b94a9786" name="Changes" comment="added ajax">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/productJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/productJSON.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/returns.js" beforeDir="false" afterPath="$PROJECT_DIR$/returns.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shippingAndBilling.html" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBilling.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shippingAndBillingAngular.js" beforeDir="false" afterPath="$PROJECT_DIR$/shippingAndBillingAngular.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signupValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/signupValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopper.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopper.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopperJSON.js" beforeDir="false" afterPath="$PROJECT_DIR$/shopperJSON.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
