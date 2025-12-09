@@ -392,14 +392,23 @@ Add to Cart
                 return;
             }
 
-            // Save current cart to localStorage for shipping page to access
+            // Calculate totals before saving
+            const totals = calculateCartTotals();
+
+            // Create properly structured cart document
             const cartDocument = {
-                cartId: generateCartId(),
                 items: cart,
-                totals: calculateCartTotals(),
+                itemCount: totals.itemCount,
+                totalPrice: totals.totalPrice,
+                totalWeight: totals.totalWeight,
+                cartId: generateCartId(),
                 lastUpdated: new Date().toISOString()
             };
+
+            // Save to localStorage for shipping page
             localStorage.setItem('checkoutCart', JSON.stringify(cartDocument));
+
+            console.log('Cart saved for checkout:', cartDocument);
 
             // Redirect to shipping page
             window.location.href = 'shippingAndBilling.html';

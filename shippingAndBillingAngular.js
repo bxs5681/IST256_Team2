@@ -61,22 +61,41 @@ angular.module('shippingApp', [])
 
         // FUNCTION: Load cart data from localStorage
         function loadCartData() {
-            const cartJson = localStorage.getItem('checkoutCart') || localStorage.getItem('shoppingCart');
+            const cartJson = localStorage.getItem('checkoutCart');
             if (cartJson) {
                 try {
                     const cartData = JSON.parse(cartJson);
-                    // Expecting cartData to have itemCount, totalPrice, and totalWeight
-                    $scope.cartSummary = {
-                        itemCount: cartData.itemCount || 0,
-                        totalPrice: cartData.totalPrice || '0.00',
-                        totalWeight: cartData.totalWeight || 0,
-                        items: cartData.items || []
-                    };
+
+                    // Check if it's the new structure
+                    if (cartData.items && Array.isArray(cartData.items)) {
+                        // New structure from shoppingCart.js
+                        $scope.cartSummary = {
+                            itemCount: cartData.itemCount || cartData.items.reduce((sum, item) => sum + item.quantity, 0),
+                            totalPrice: cartData.totalPrice || cartData.items.reduce((sum, item) => sum + (item.productPrice * item.quantity), 0).toFixed(2),
+                            totalWeight: cartData.totalWeight || cartData.items.reduce((sum, item) => sum + (item.productWeight * item.quantity), 0).toFixed(2),
+                            items: cartData.items
+                        };
+                    } else if (cartData.totals) {
+                        // Old structure compatibility
+                        $scope.cartSummary = {
+                            itemCount: cartData.totals.itemCount || 0,
+                            totalPrice: cartData.totals.totalPrice || '0.00',
+                            totalWeight: cartData.totals.totalWeight || 0,
+                            items: cartData.items || []
+                        };
+                    } else {
+                        // Fallback
+                        console.warn('Unexpected cart structure:', cartData);
+                        $scope.cartSummary = null;
+                    }
+
+                    console.log('Loaded cart summary:', $scope.cartSummary);
                 } catch (e) {
                     console.error('Error loading cart:', e);
+                    $scope.cartSummary = null;
                 }
             } else {
-                console.log('No cart data found');
+                console.log('No cart data found in localStorage');
                 $scope.cartSummary = null;
             }
         }
